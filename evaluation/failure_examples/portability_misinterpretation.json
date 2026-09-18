@@ -1,0 +1,662 @@
+{
+  "case_id": "PUB-010",
+  "decision": "NOT_ADMISSIBLE",
+  "reason_code": null,
+  "confidence": 0.85,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [
+    {
+      "dimension": "Waiting period for cataract surgery",
+      "statement": "Cataract surgery is subject to a 1-year waiting period in the first year of insurance cover.",
+      "effect": "excludes",
+      "evidence_ids": [
+        "clause-188173fa6d60"
+      ],
+      "fact_paths": []
+    },
+    {
+      "dimension": "Portability and continuity of coverage",
+      "statement": "The policy requires at least 1 year of continuous coverage with a previous insurer to waive the 1-year waiting period for specific diseases like cataract.",
+      "effect": "supports",
+      "evidence_ids": [
+        "clause-188173fa6d60"
+      ],
+      "fact_paths": []
+    },
+    {
+      "dimension": "Continuity verification",
+      "statement": "The insured has only 8 months of continuous coverage under the current policy and 1 year of prior coverage. The policy explicitly states it shall consider only completed years of coverage for waiver of waiting periods.",
+      "effect": "excludes",
+      "evidence_ids": [
+        "clause-188173fa6d60"
+      ],
+      "fact_paths": []
+    },
+    {
+      "dimension": "Day care procedure eligibility",
+      "statement": "While the policy covers day care procedures, the specific waiting period exclusion for cataract surgery takes precedence over the general day care coverage provision.",
+      "effect": "limits",
+      "evidence_ids": [
+        "clause-2cad9df5f127",
+        "clause-188173fa6d60"
+      ],
+      "fact_paths": []
+    }
+  ],
+  "applicable_limits": [
+    {
+      "category": "Doctor fees",
+      "description": "Subject to 25% of Sum Insured limit.",
+      "claimed_inr": 20000.0,
+      "cap_inr": 125000.0,
+      "allowed_inr": null,
+      "evidence_ids": [
+        "clause-3371f7e3f0bd"
+      ],
+      "conditional": true
+    },
+    {
+      "category": "Medicines and diagnostics",
+      "description": "Subject to 40% of Sum Insured limit.",
+      "claimed_inr": 60000.0,
+      "cap_inr": 200000.0,
+      "allowed_inr": null,
+      "evidence_ids": [
+        "clause-ea9845a19c83"
+      ],
+      "conditional": true
+    }
+  ],
+  "missing_evidence": [],
+  "next_action": "Deny the claim as the insured has not completed the required 1 full year of continuous coverage necessary to waive the 1-year waiting period for cataract surgery.",
+  "citations": [
+    {
+      "claim": "Cataract surgery is subject to a 1-year waiting period in the first year of insurance cover.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 9,
+      "pages": [
+        9
+      ],
+      "section": "WHAT WE EXCLUDE / 3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the",
+      "chunk_id": "clause-188173fa6d60",
+      "quote": "3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the\nfollowing Diseases:\ni) Cataract\nii) Benign Prostatic Hypertrophy\niii) Myomectomy, Hysterectomy\niv) Hernia, Hydrocele\nv) Fistula in anus, Piles\nvi) Arthritis, Gout, Rheumatism\nvii) Joint replacement unless due to accident\nviii) Sinusitis and related disorders\nix) Stone in the urinary and biliary systems\nx) Dilatation and Curettage\nxi) Skin and all internal tumors/ cysts/ nodules/ polyps of any kind, including breast lumps unless\nmalignant, adenoids and hemorrhoids\nxii) Dialysis required for rental failure\nxiii) Surgery on tonsils and sinuses\nxiv) Gastric and duodenal ulcers\nHowever, a waiting period of 1 year will not apply if You were insured continuously and without interruption\nfor at least 1 year under Our or any other Indian insurer's individual health insurance Policy for the\nreimbursement of medical costs for inpatient treatment in a Hospital.\nNB: The reduction in the waiting period specified above shall be applied subject to the following:\n We will only apply the reduction of the waiting period if We have received the database and claim\nhistory from the previous Indian insurance Company (if applicable);\n We are under no obligation to insure all Insured Persons or to insure all Insured Persons on the\nproposed terms, or on the same terms as the previous health insurance Policy even if You have\nsubmitted to Us all documentation\n We shall consider only completed years of coverage for waiver of waiting periods."
+    },
+    {
+      "claim": "The policy requires at least 1 year of continuous coverage with a previous insurer to waive the 1-year waiting period for specific diseases like cataract.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 9,
+      "pages": [
+        9
+      ],
+      "section": "WHAT WE EXCLUDE / 3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the",
+      "chunk_id": "clause-188173fa6d60",
+      "quote": "3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the\nfollowing Diseases:\ni) Cataract\nii) Benign Prostatic Hypertrophy\niii) Myomectomy, Hysterectomy\niv) Hernia, Hydrocele\nv) Fistula in anus, Piles\nvi) Arthritis, Gout, Rheumatism\nvii) Joint replacement unless due to accident\nviii) Sinusitis and related disorders\nix) Stone in the urinary and biliary systems\nx) Dilatation and Curettage\nxi) Skin and all internal tumors/ cysts/ nodules/ polyps of any kind, including breast lumps unless\nmalignant, adenoids and hemorrhoids\nxii) Dialysis required for rental failure\nxiii) Surgery on tonsils and sinuses\nxiv) Gastric and duodenal ulcers\nHowever, a waiting period of 1 year will not apply if You were insured continuously and without interruption\nfor at least 1 year under Our or any other Indian insurer's individual health insurance Policy for the\nreimbursement of medical costs for inpatient treatment in a Hospital.\nNB: The reduction in the waiting period specified above shall be applied subject to the following:\n We will only apply the reduction of the waiting period if We have received the database and claim\nhistory from the previous Indian insurance Company (if applicable);\n We are under no obligation to insure all Insured Persons or to insure all Insured Persons on the\nproposed terms, or on the same terms as the previous health insurance Policy even if You have\nsubmitted to Us all documentation\n We shall consider only completed years of coverage for waiver of waiting periods."
+    },
+    {
+      "claim": "The insured has only 8 months of continuous coverage under the current policy and 1 year of prior coverage. The policy explicitly states it shall consider only completed years of coverage for waiver of waiting periods.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 9,
+      "pages": [
+        9
+      ],
+      "section": "WHAT WE EXCLUDE / 3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the",
+      "chunk_id": "clause-188173fa6d60",
+      "quote": "3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the\nfollowing Diseases:\ni) Cataract\nii) Benign Prostatic Hypertrophy\niii) Myomectomy, Hysterectomy\niv) Hernia, Hydrocele\nv) Fistula in anus, Piles\nvi) Arthritis, Gout, Rheumatism\nvii) Joint replacement unless due to accident\nviii) Sinusitis and related disorders\nix) Stone in the urinary and biliary systems\nx) Dilatation and Curettage\nxi) Skin and all internal tumors/ cysts/ nodules/ polyps of any kind, including breast lumps unless\nmalignant, adenoids and hemorrhoids\nxii) Dialysis required for rental failure\nxiii) Surgery on tonsils and sinuses\nxiv) Gastric and duodenal ulcers\nHowever, a waiting period of 1 year will not apply if You were insured continuously and without interruption\nfor at least 1 year under Our or any other Indian insurer's individual health insurance Policy for the\nreimbursement of medical costs for inpatient treatment in a Hospital.\nNB: The reduction in the waiting period specified above shall be applied subject to the following:\n We will only apply the reduction of the waiting period if We have received the database and claim\nhistory from the previous Indian insurance Company (if applicable);\n We are under no obligation to insure all Insured Persons or to insure all Insured Persons on the\nproposed terms, or on the same terms as the previous health insurance Policy even if You have\nsubmitted to Us all documentation\n We shall consider only completed years of coverage for waiver of waiting periods."
+    },
+    {
+      "claim": "While the policy covers day care procedures, the specific waiting period exclusion for cataract surgery takes precedence over the general day care coverage provision.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7,
+        8
+      ],
+      "section": "WHAT WE COVER / NB4: The hospitalisation treatment of Insured Person as inpatient in the Hospital/Nursing Home for a",
+      "chunk_id": "clause-2cad9df5f127",
+      "quote": "NB4: The hospitalisation treatment of Insured Person as inpatient in the Hospital/Nursing Home for a\nminimum period of 24 hours for specific treatment like Dialysis, Chemotherapy, Radiotherapy, Eye\nSurgery, Lithotripsy, Tonsillectomy or D&C(medical expenses for 140 Day Care Procedures enlisted\nin the Annexure to this Policy Wordings) shall also be covered under the Policy.\nThe minimum stay of 24 hours can be waived in other cases also provided that the following\nconditions are fulfilled:\na) The treatment is such that it necessitates Hospitalisation and procedure involved requires\nspecialised infrastructure facilities available in the Hospital.\nOr\nb) Due to technological advances, the period of Hospitalisation for the treatment has been reduced to\nless than 24 hours."
+    },
+    {
+      "claim": "While the policy covers day care procedures, the specific waiting period exclusion for cataract surgery takes precedence over the general day care coverage provision.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 9,
+      "pages": [
+        9
+      ],
+      "section": "WHAT WE EXCLUDE / 3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the",
+      "chunk_id": "clause-188173fa6d60",
+      "quote": "3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the\nfollowing Diseases:\ni) Cataract\nii) Benign Prostatic Hypertrophy\niii) Myomectomy, Hysterectomy\niv) Hernia, Hydrocele\nv) Fistula in anus, Piles\nvi) Arthritis, Gout, Rheumatism\nvii) Joint replacement unless due to accident\nviii) Sinusitis and related disorders\nix) Stone in the urinary and biliary systems\nx) Dilatation and Curettage\nxi) Skin and all internal tumors/ cysts/ nodules/ polyps of any kind, including breast lumps unless\nmalignant, adenoids and hemorrhoids\nxii) Dialysis required for rental failure\nxiii) Surgery on tonsils and sinuses\nxiv) Gastric and duodenal ulcers\nHowever, a waiting period of 1 year will not apply if You were insured continuously and without interruption\nfor at least 1 year under Our or any other Indian insurer's individual health insurance Policy for the\nreimbursement of medical costs for inpatient treatment in a Hospital.\nNB: The reduction in the waiting period specified above shall be applied subject to the following:\n We will only apply the reduction of the waiting period if We have received the database and claim\nhistory from the previous Indian insurance Company (if applicable);\n We are under no obligation to insure all Insured Persons or to insure all Insured Persons on the\nproposed terms, or on the same terms as the previous health insurance Policy even if You have\nsubmitted to Us all documentation\n We shall consider only completed years of coverage for waiver of waiting periods."
+    },
+    {
+      "claim": "{\"category\":\"Doctor fees\",\"description\":\"Subject to 25% of Sum Insured limit.\",\"claimed_inr\":20000.0,\"cap_inr\":125000.0,\"allowed_inr\":null,\"evidence_ids\":[\"clause-3371f7e3f0bd\"],\"conditional\":true}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit",
+      "chunk_id": "clause-3371f7e3f0bd",
+      "quote": "2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit\nof 25% of Sum Assured."
+    },
+    {
+      "claim": "{\"category\":\"Medicines and diagnostics\",\"description\":\"Subject to 40% of Sum Insured limit.\",\"claimed_inr\":60000.0,\"cap_inr\":200000.0,\"allowed_inr\":null,\"evidence_ids\":[\"clause-ea9845a19c83\"],\"conditional\":true}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,",
+      "chunk_id": "clause-ea9845a19c83",
+      "quote": "3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,\nDiagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial\nLimbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured ."
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unsupported_claims": [],
+    "structural_checks_passed": true,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The policy explicitly lists Cataract under the 1-year waiting period for the first year of insurance cover."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The policy requires at least 1 year of continuous, uninterrupted coverage under an Indian insurer to waive the 1-year waiting period."
+      },
+      {
+        "statement_index": 2,
+        "supported": true,
+        "explanation": "The policy requires completed years of coverage for the waiver. The insured has 8 months of current coverage and 1 year of prior coverage, which does not meet the requirement for a completed year of continuous coverage under the current policy, and the waiver rule requires 1 full year of prior coverage."
+      },
+      {
+        "statement_index": 3,
+        "supported": true,
+        "explanation": "The policy defines day care coverage but does not override the specific waiting period exclusions listed in the 'What We Exclude' section."
+      },
+      {
+        "statement_index": 4,
+        "supported": true,
+        "explanation": "The policy limits doctor fees to 25% of the Sum Assured (500,000 * 0.25 = 125,000)."
+      },
+      {
+        "statement_index": 5,
+        "supported": true,
+        "explanation": "The policy limits medicines and diagnostics to 40% of the Sum Assured (500,000 * 0.40 = 200,000)."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 2631.0,
+      "details": {
+        "dimensions": [
+          "Waiting period applicability for cataract surgery",
+          "Portability and continuity of coverage benefits",
+          "Day care procedure eligibility criteria",
+          "Sum insured portability limits",
+          "Documentation requirements for prior coverage verification"
+        ],
+        "queries": [
+          "What is the specific waiting period for cataract surgery under policy USGIC-CSC-2017-2018?",
+          "Does the policy allow for the waiver of waiting periods based on 1 year of prior continuous coverage?",
+          "Are day care procedures defined as requiring less than 24 hours of hospitalization covered?",
+          "What are the documentation requirements to validate prior continuous coverage from another Indian insurer?",
+          "Are there specific sub-limits for cataract surgery or doctor fees under this policy?"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 3032.77,
+      "details": {
+        "query_count": 10,
+        "result_count": 20,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-2a8cae278105",
+          "clause-2c32d4e488c3",
+          "clause-e9109c4719df",
+          "clause-61dc71efc005",
+          "clause-05f60ef6948e",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-4840074a0643",
+          "clause-bfc74c4949fb",
+          "clause-c85db1687ad5",
+          "clause-8395197422a1",
+          "clause-6fdf886a8887"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 10499.71,
+      "details": {
+        "findings": 4,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 13315.2,
+      "details": {
+        "status": "PASS",
+        "checked_statements": 6,
+        "defects": []
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.2,
+      "details": {
+        "decision": "NOT_ADMISSIBLE",
+        "reason_code": null
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital means institution registered OR all minimum criteria nursing staff beds",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.8339692950248718,
+            "bm25_score": 25.887570346997858,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995187520980835
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 2,
+            "dense_score": 0.6831597089767456,
+            "bm25_score": 24.450688120527523,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.9969294667243958
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6889106035232544,
+            "bm25_score": 10.021454894014322,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.7601166367530823
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.7258965969085693,
+            "bm25_score": 8.204639545348508,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.19630639255046844
+          }
+        ]
+      },
+      {
+        "query": "Medically Necessary treatment prescribed Medical Practitioner",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.7772445678710938,
+            "bm25_score": 18.910936195702106,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995817542076111
+          },
+          {
+            "chunk_id": "clause-e9109c4719df",
+            "rank": 2,
+            "dense_score": 0.703262984752655,
+            "bm25_score": 3.9730248819671914,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.48138707876205444
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.6190924644470215,
+            "bm25_score": 2.3311874460666626,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.34145864844322205
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.6318925619125366,
+            "bm25_score": 2.589114120706908,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.23629386723041534
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "What is the specific waiting period for cataract surgery under policy USGIC-CSC-2017-2018?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.6647950410842896,
+            "bm25_score": 10.696861568663703,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.06351666152477264
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.695959210395813,
+            "bm25_score": 12.882809052663873,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.01788279227912426
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 3,
+            "dense_score": 0.649429976940155,
+            "bm25_score": 9.434283794612949,
+            "rrf_score": 0.031024531024531024,
+            "rerank_score": 0.0034505855292081833
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6251756548881531,
+            "bm25_score": 11.620946441321337,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.0008636320708319545
+          }
+        ]
+      },
+      {
+        "query": "Does the policy allow for the waiver of waiting periods based on 1 year of prior continuous coverage?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.7752699851989746,
+            "bm25_score": 16.856657141112393,
+            "rrf_score": 0.03177805800756621,
+            "rerank_score": 0.9858536720275879
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 2,
+            "dense_score": 0.7439479231834412,
+            "bm25_score": 20.016016237813293,
+            "rrf_score": 0.031754032258064516,
+            "rerank_score": 0.9507045149803162
+          },
+          {
+            "chunk_id": "clause-bfc74c4949fb",
+            "rank": 3,
+            "dense_score": 0.6576541066169739,
+            "bm25_score": 15.953923418244475,
+            "rrf_score": 0.015151515151515152,
+            "rerank_score": 0.6695255637168884
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.7548161745071411,
+            "bm25_score": 24.397817291065614,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.20256994664669037
+          }
+        ]
+      },
+      {
+        "query": "Are day care procedures defined as requiring less than 24 hours of hospitalization covered?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 1,
+            "dense_score": 0.8317527174949646,
+            "bm25_score": 25.363039217701747,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9991840720176697
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 2,
+            "dense_score": 0.753495991230011,
+            "bm25_score": 23.91322282061546,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.9973779916763306
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.762030303478241,
+            "bm25_score": 23.495156964879587,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.992629885673523
+          },
+          {
+            "chunk_id": "clause-c85db1687ad5",
+            "rank": 4,
+            "dense_score": 0.715118408203125,
+            "bm25_score": 17.362365168710127,
+            "rrf_score": 0.031009615384615385,
+            "rerank_score": 0.8524652719497681
+          }
+        ]
+      },
+      {
+        "query": "What are the documentation requirements to validate prior continuous coverage from another Indian insurer?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 1,
+            "dense_score": 0.7049906253814697,
+            "bm25_score": 14.195636522897622,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.9619879722595215
+          },
+          {
+            "chunk_id": "clause-8395197422a1",
+            "rank": 2,
+            "dense_score": 0.7443569898605347,
+            "bm25_score": 14.480817827116478,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.8083685040473938
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 3,
+            "dense_score": 0.696434736251831,
+            "bm25_score": 9.017911319465032,
+            "rrf_score": 0.030330882352941176,
+            "rerank_score": 0.0355084203183651
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.6608227491378784,
+            "bm25_score": 11.79341655484809,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.031101159751415253
+          }
+        ]
+      },
+      {
+        "query": "Are there specific sub-limits for cataract surgery or doctor fees under this policy?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 1,
+            "dense_score": 0.7214686870574951,
+            "bm25_score": 6.568055192013435,
+            "rrf_score": 0.03021353930031804,
+            "rerank_score": 0.009492399170994759
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 2,
+            "dense_score": 0.654543936252594,
+            "bm25_score": 10.873740865430655,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.006046040449291468
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7358980178833008,
+            "bm25_score": 9.039117581691682,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.005298031028360128
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6612778306007385,
+            "bm25_score": 9.280529921432027,
+            "rrf_score": 0.0304147465437788,
+            "rerank_score": 0.0007900003110989928
+          }
+        ]
+      },
+      {
+        "query": "NB4 Eye Surgery 24 hours waived specialised infrastructure technological advances",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.7037104964256287,
+            "bm25_score": 35.35693544479064,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9987353682518005
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 2,
+            "dense_score": 0.5434173345565796,
+            "bm25_score": 11.54117252556117,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.00019990383589174598
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 3,
+            "dense_score": 0.5077739953994751,
+            "bm25_score": 10.046466428104429,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 6.653068703599274e-05
+          },
+          {
+            "chunk_id": "clause-6fdf886a8887",
+            "rank": 4,
+            "dense_score": 0.6064133644104004,
+            "bm25_score": 4.092369478798285,
+            "rrf_score": 0.03036576949620428,
+            "rerank_score": 5.491487172548659e-05
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 20,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 29490.11
+}

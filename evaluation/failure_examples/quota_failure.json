@@ -1,0 +1,518 @@
+{
+  "case_id": "PUB-004",
+  "decision": "NEEDS_REVIEW",
+  "reason_code": "MODEL_OR_TOOL_UNAVAILABLE",
+  "confidence": 0.0,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [],
+  "applicable_limits": [],
+  "missing_evidence": [
+    "A complete, validated policy assessment is required before deciding this claim."
+  ],
+  "next_action": "Check service configuration or review the validation trace, then retry.",
+  "citations": [],
+  "validation": {
+    "status": "UNAVAILABLE",
+    "unsupported_claims": [
+      "Final decision conflicts with unresolved material evidence",
+      "The decision is not fully supported because the admissibility of the claim is conditional on the duration of domiciliary treatment exceeding three days and the diagnosis not being an excluded disease, which are currently missing evidence. The decision states 'ADMISSIBLE_WITH_LIMITS' without resolving these conditions."
+    ],
+    "structural_checks_passed": false,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The excerpt 'Domiciliary Treatment means medical treatment for an Illness/disease/Injury which in the normal course would require care and treatment at a Hospital but is actually taken while confined at home under any of the following circumstances: ... the condition of the patient is such that he/she is not in a condition to be removed to a Hospital, or ... the patient takes treatment at home on account of non-availability of room in a Hospital' directly supports this statement."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The case facts state 'hospital_room_unavailable': true, and the cited excerpt 'the patient takes treatment at home on account of non-availability of room in a Hospital' confirms this as a valid circumstance for domiciliary treatment."
+      },
+      {
+        "statement_index": 2,
+        "supported": true,
+        "explanation": "The excerpt 'Any treatment not exceeding three days' is listed under 'WHAT WE EXCLUDE / Any expense under Domiciliary Hospitalisation for', and the case facts do not provide the duration of the domiciliary treatment, making the statement accurate."
+      },
+      {
+        "statement_index": 3,
+        "supported": true,
+        "explanation": "The excerpt lists specific diseases excluded from domiciliary hospitalization, and the case's diagnosis 'Condition requiring home treatment' is indeed generic and does not confirm if it is one of the excluded diseases."
+      },
+      {
+        "statement_index": 4,
+        "supported": true,
+        "explanation": "The excerpt 'NB2: Expenses incurred for Domiciliary Hospitalization will be paid up to a maximum aggregate sub-limit of 20% of the Basic Sum Insured' directly supports this statement."
+      },
+      {
+        "statement_index": 5,
+        "supported": true,
+        "explanation": "The excerpt '2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit of 25% of Sum Assured' directly supports this statement."
+      },
+      {
+        "statement_index": 6,
+        "supported": true,
+        "explanation": "The excerpt '3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs, Diagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial Limbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured' directly supports this statement regarding the limit for medicines and diagnostic materials."
+      },
+      {
+        "statement_index": 7,
+        "supported": true,
+        "explanation": "The cited excerpts define 'Hospital' and 'Day Care Centre' with registration and facility criteria. However, these definitions are for in-patient care and day care treatment, not explicitly for domiciliary treatment, and there is no specific exclusion for non-network providers for domiciliary treatment in the provided policy excerpts."
+      },
+      {
+        "statement_index": 8,
+        "supported": true,
+        "explanation": "The calculation of the cap (20% of 500,000 INR = 100,000 INR) and the claimed amount (25,000 + 80,000 = 105,000 INR) are correct based on the policy and case facts. The conditionality is also correctly noted due to missing information about treatment duration and specific diagnosis."
+      },
+      {
+        "statement_index": 9,
+        "supported": true,
+        "explanation": "The calculation of the cap (25% of 500,000 INR = 125,000 INR) and the claimed amount (25,000 INR) are correct based on the policy and case facts. The conditionality is also correctly noted due to missing information about treatment duration and specific diagnosis."
+      },
+      {
+        "statement_index": 10,
+        "supported": true,
+        "explanation": "The calculation of the cap (40% of 500,000 INR = 200,000 INR) and the claimed amount (80,000 INR) are correct based on the policy and case facts. The conditionality is also correctly noted due to missing information about treatment duration and specific diagnosis."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 1685.81,
+      "details": {
+        "dimensions": [
+          "domiciliary treatment coverage",
+          "domiciliary treatment conditions",
+          "domiciliary treatment sub-limit",
+          "network provider requirement"
+        ],
+        "queries": [
+          "domiciliary hospitalization definition",
+          "conditions for domiciliary hospitalization",
+          "sub-limits for domiciliary hospitalization",
+          "network hospital requirement for domiciliary treatment"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 1810.26,
+      "details": {
+        "query_count": 9,
+        "result_count": 15,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-2c32d4e488c3",
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-05f60ef6948e",
+          "clause-d807f54cecb1",
+          "clause-63f09648d041",
+          "clause-7329216da69e"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 6866.51,
+      "details": {
+        "findings": 8,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 7173.13,
+      "details": {
+        "status": "FAIL",
+        "checked_statements": 11,
+        "defects": [
+          "Final decision conflicts with unresolved material evidence",
+          "The decision is not fully supported because the admissibility of the claim is conditional on the duration of domiciliary treatment exceeding three days and the diagnosis not being an excluded disease, which are currently missing evidence. The decision states 'ADMISSIBLE_WITH_LIMITS' without resolving these conditions."
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Could not complete; routed to review",
+      "elapsed_ms": 2395.2,
+      "details": {
+        "error_type": "GoogleRateLimitError"
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.55,
+      "details": {
+        "decision": "NEEDS_REVIEW",
+        "reason_code": "MODEL_OR_TOOL_UNAVAILABLE"
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital definition registered OR minimum criteria medically necessary treatment",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.8267024755477905,
+            "bm25_score": 16.43539589519847,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9980465173721313
+          },
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 2,
+            "dense_score": 0.770870566368103,
+            "bm25_score": 11.555412317011175,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.99798583984375
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 3,
+            "dense_score": 0.6583521366119385,
+            "bm25_score": 14.078474294193667,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.9915187954902649
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6931402087211609,
+            "bm25_score": 8.540601353278598,
+            "rrf_score": 0.030090497737556562,
+            "rerank_score": 0.958306610584259
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "domiciliary hospitalization definition",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 1,
+            "dense_score": 0.8338596820831299,
+            "bm25_score": 4.053495484916635,
+            "rrf_score": 0.03177805800756621,
+            "rerank_score": 0.9989240765571594
+          },
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 2,
+            "dense_score": 0.6848883032798767,
+            "bm25_score": 8.695585893584347,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.9927188158035278
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 3,
+            "dense_score": 0.6939265727996826,
+            "bm25_score": 3.809765799158686,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.9143183827400208
+          },
+          {
+            "chunk_id": "clause-7329216da69e",
+            "rank": 4,
+            "dense_score": 0.5397449731826782,
+            "bm25_score": 3.6209054196450228,
+            "rrf_score": 0.014705882352941176,
+            "rerank_score": 0.13184726238250732
+          }
+        ]
+      },
+      {
+        "query": "conditions for domiciliary hospitalization",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.7962108850479126,
+            "bm25_score": 4.181924715915808,
+            "rrf_score": 0.03177805800756621,
+            "rerank_score": 0.9975258708000183
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 2,
+            "dense_score": 0.7874574661254883,
+            "bm25_score": 4.386558076996115,
+            "rrf_score": 0.031754032258064516,
+            "rerank_score": 0.996351957321167
+          },
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 3,
+            "dense_score": 0.7468119859695435,
+            "bm25_score": 9.102074683268565,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.9923976063728333
+          },
+          {
+            "chunk_id": "clause-7329216da69e",
+            "rank": 4,
+            "dense_score": 0.6554500460624695,
+            "bm25_score": 3.6209054196450228,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.11864421516656876
+          }
+        ]
+      },
+      {
+        "query": "sub-limits for domiciliary hospitalization",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 1,
+            "dense_score": 0.8102693557739258,
+            "bm25_score": 15.143169064423084,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9996755123138428
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7594475746154785,
+            "bm25_score": 4.181924715915808,
+            "rrf_score": 0.030834914611005692,
+            "rerank_score": 0.9340453743934631
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 3,
+            "dense_score": 0.7233250737190247,
+            "bm25_score": 10.873740865430655,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.7964403033256531
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.7176991701126099,
+            "bm25_score": 4.386558076996115,
+            "rrf_score": 0.030536130536130537,
+            "rerank_score": 0.20192162692546844
+          }
+        ]
+      },
+      {
+        "query": "network hospital requirement for domiciliary treatment",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.7229280471801758,
+            "bm25_score": 5.528476219096909,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.9942856431007385
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 2,
+            "dense_score": 0.7386443614959717,
+            "bm25_score": 8.341302170519306,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.988471508026123
+          },
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 3,
+            "dense_score": 0.7130920886993408,
+            "bm25_score": 5.3536083787283015,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.5055739879608154
+          },
+          {
+            "chunk_id": "clause-7329216da69e",
+            "rank": 4,
+            "dense_score": 0.5983012914657593,
+            "bm25_score": 4.922879979381629,
+            "rrf_score": 0.014705882352941176,
+            "rerank_score": 0.19573335349559784
+          }
+        ]
+      },
+      {
+        "query": "Domiciliary treatment home hospital unavailable definition 20% sub limit",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 1,
+            "dense_score": 0.7274357676506042,
+            "bm25_score": 20.026250282540605,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9917473793029785
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7223809361457825,
+            "bm25_score": 8.306970675400926,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.9741984009742737
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 3,
+            "dense_score": 0.7377568483352661,
+            "bm25_score": 11.850806395217836,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.9417027235031128
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 4,
+            "dense_score": 0.6558758020401001,
+            "bm25_score": 15.407064715794856,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.09961981326341629
+          }
+        ]
+      },
+      {
+        "query": "Domiciliary exclusions treatment not exceeding three days diseases",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.8457660675048828,
+            "bm25_score": 17.48716450487842,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9998123049736023
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 2,
+            "dense_score": 0.7258449196815491,
+            "bm25_score": 6.394351456160074,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.8848841786384583
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7403620481491089,
+            "bm25_score": 5.2474366790902565,
+            "rrf_score": 0.031754032258064516,
+            "rerank_score": 0.21660174429416656
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.7336364984512329,
+            "bm25_score": 2.5775157815259973,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.09694560617208481
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 15,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-2.5-flash",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 19943.15
+}

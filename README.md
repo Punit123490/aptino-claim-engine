@@ -31,7 +31,7 @@ On Windows, use `Copy-Item .env.example .env` if `cp` is unavailable. Enter your
 
 ```dotenv
 GOOGLE_API_KEY=your_key_here
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.1-flash-lite
 ```
 
 Do not commit `.env`. Credentials are read only by the backend, never sent to the frontend. Run:

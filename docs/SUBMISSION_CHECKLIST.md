@@ -17,9 +17,15 @@ Create a public repository called `aptino-claim-engine` (or your preferred name)
 
 Never upload `.env`, `.cache`, virtual environments, credentials or private account tokens. The delivery ZIP is generated with these excluded. Preserve the supplied public JSON exactly.
 
-## Hugging Face publication
+## Render publication
 
-Create a public Space and choose Docker with a blank template. Upload the project contents. Under Space Settings, add `GOOGLE_API_KEY` as a secret and `GEMINI_MODEL=gemini-2.5-flash` as a variable. The README already specifies Docker and port 7860. Wait for the image to build.
+Render provides a Free Docker web service option. Create a Web Service using the public GitHub repository URL. Select Docker and the Free instance, and add `GOOGLE_API_KEY` as a secret environment variable. Set `GEMINI_MODEL=gemini-3.1-flash-lite`. Keep the health check at `/health`. This service listens on port 7860, which Render detects.
+
+The repository includes `render.yaml` with `plan: free`; do not select a paid instance unless you intend to pay. The free service has 512 MB RAM and can sleep after inactivity. Verify successful startup and a live case after deployment. If the host requests a card or plan upgrade, account setup must be completed by the account owner.
+
+## Optional Hugging Face publication
+
+Hugging Face currently requires a paid plan for Docker Spaces. If you already have an eligible plan, create a public Space and choose Docker with a blank template. Upload the project contents. Under Space Settings, add `GOOGLE_API_KEY` as a secret and `GEMINI_MODEL=gemini-3.1-flash-lite` as a variable. The README already specifies Docker and port 7860. Wait for the image to build.
 
 Open the live app. Confirm `/health` is ready, `/docs` loads, the policy link opens, and a supplied claim produces a real validated response. If your Gemini model name differs, update the variable and rerun the evaluation with the same name.
 

@@ -79,7 +79,7 @@ class Finding(BaseModel):
 
 
 class Limit(BaseModel):
-    category: str
+    category: str = Field(description='Exact expenses_inr key, e.g. room, doctor_fees, medicines_diagnostics, pre_hospitalization, post_hospitalization, ambulance; use claim_total only for an aggregate cap.')
     description: str
     claimed_inr: float = Field(ge=0)
     cap_inr: float | None = Field(default=None, ge=0)

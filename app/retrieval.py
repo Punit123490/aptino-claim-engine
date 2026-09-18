@@ -34,7 +34,7 @@ class PolicyIndex:
         self.reranker_model = settings.reranker_model
         self.embedder = TextEmbedding(
             model_name=settings.embedding_model, cache_dir=str(settings.cache_dir / 'embeddings'),
-            threads=2,
+            threads=2, enable_cpu_mem_arena=False,
         )
         cache_key = self.policy_sha256[:16] + '-' + settings.embedding_model.split('/')[-1]
         vector_path = settings.cache_dir / f'{cache_key}.npz'

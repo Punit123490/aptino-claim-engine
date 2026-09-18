@@ -7,7 +7,7 @@ from fastapi.testclient import TestClient
 from pydantic import ValidationError
 
 from app.config import ROOT, get_settings
-from app.guards import structural_errors
+from app.guards import apply_evidence_gates, structural_errors
 from app.ingestion import ingest_policy
 from app.models import Assessment, ClaimCase
 from app.retrieval import reciprocal_rank_fusion
@@ -85,6 +85,50 @@ def test_payable_amount_cannot_exceed_bill(case_data):
     result = assessment(limits=[dict(category='doctor_fees', description='Fee cap', claimed_inr=30000,
                                    allowed_inr=40000, cap_inr=50000, evidence_ids=['known'])])
     assert any('exceeds claimed' in e for e in structural_errors(result, {'known':{}}, ClaimCase.model_validate(case_data)))
+
+
+def test_hospital_gap_blocks_approval_using_retrieved_definition(case_data):
+    evidence = [dict(chunk_id='hospital', text='Hospital means a registered institution OR all minimum criteria.')]
+    result = apply_evidence_gates(assessment(), evidence, ClaimCase.model_validate(case_data))
+    assert result.recommended_decision.value == 'NEEDS_REVIEW'
+    assert result.findings[-1].evidence_ids == ['hospital']
+
+
+def test_registered_hospital_does_not_trigger_missing_evidence_gate(case_data):
+    case_data['evidence_context'] = {'hospital_registered': True}
+    evidence = [dict(chunk_id='hospital', text='Hospital means a registered institution OR all minimum criteria.')]
+    result = apply_evidence_gates(assessment(), evidence, ClaimCase.model_validate(case_data))
+    assert result.recommended_decision.value == 'ADMISSIBLE'
+
+
+def test_room_ambiguity_does_not_publish_unproven_daily_amount(case_data):
+    draft = assessment(limits=[dict(category='room', description='Per-day cap', claimed_inr=30000,
+                                   allowed_inr=20000, cap_inr=20000, evidence_ids=['room'])])
+    evidence = [dict(chunk_id='room', text='Normal Room expenses: 1.0% of Basic Sum Insured.')]
+    result = apply_evidence_gates(draft, evidence, ClaimCase.model_validate(case_data))
+    assert result.limits[0].allowed_inr is None
+    assert result.limits[0].conditional is True
+    assert result.recommended_decision.value == 'NEEDS_REVIEW'
+
+
+def test_decisive_ped_exclusion_precedes_unrelated_missing_documents(case_data):
+    case_data['treatment']['pre_existing'] = True
+    evidence = [dict(chunk_id='ped', text='Pre-existing diseases will not be covered until 48 months of continuous coverage.')]
+    result = apply_evidence_gates(assessment(missing_evidence=['hospital registration']), evidence, ClaimCase.model_validate(case_data))
+    assert result.recommended_decision.value == 'NOT_ADMISSIBLE'
+    assert result.missing_evidence == []
+    assert result.findings[0].evidence_ids == ['ped']
+
+
+def test_portability_rejection_cannot_ignore_completed_prior_year(case_data):
+    case_data['prior_insurer_continuous_years'] = 1
+    case_data['prior_policy'] = dict(continuous_years=1, insurer_type='Indian individual health insurer',
+                                   database_and_claim_history_received=True, previous_sum_insured_inr=500000)
+    draft = assessment(recommended_decision='NOT_ADMISSIBLE', findings=[dict(
+        dimension='waiting', statement='Cataract is excluded because current coverage is less than one year.',
+        effect='excludes', evidence_ids=['prior'])])
+    evidence = {'prior':dict(chunk_id='prior', text='The waiting period of 1 year will not apply if previously insured.')}
+    assert any('prior coverage' in error for error in structural_errors(draft, evidence, ClaimCase.model_validate(case_data)))
 
 
 @pytest.fixture

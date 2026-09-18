@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ROOT / '.env', extra='ignore')
     google_api_key: SecretStr = SecretStr('')
-    gemini_model: str = 'gemini-2.5-flash'
+    gemini_model: str = 'gemini-3.1-flash-lite'
     model_timeout_seconds: int = 90
     model_max_retries: int = 2
     model_min_interval_seconds: float = 13.0

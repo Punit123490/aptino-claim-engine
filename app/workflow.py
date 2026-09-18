@@ -8,7 +8,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import END, START, StateGraph
 
 from app.config import Settings
-from app.guards import apply_evidence_gates, material_statements, structural_errors
+from app.guards import apply_evidence_gates, material_statements, structural_errors, verified_policy_checks
 from app.models import (
     Assessment, Citation, ClaimCase, ClaimResult, Decision, Investigation,
     SemanticAudit, TraceEvent, ValidationReport,
@@ -147,6 +147,7 @@ class ClaimWorkflow:
                 'case': state['case'], 'investigation': state['plan'],
                 'evidence': [{k: e[k] for k in ('chunk_id', 'text', 'section', 'pages')} for e in state['evidence']],
                 'previous_audit_defects': state.get('audit_errors', []),
+                'verified_policy_checks': verified_policy_checks(state['evidence'], ClaimCase.model_validate(state['case'])),
             })
             assessment = apply_evidence_gates(assessment, state['evidence'], ClaimCase.model_validate(state['case']))
             return {'assessment': assessment.model_dump(mode='json'), 'attempts': state.get('attempts', 0) + 1,

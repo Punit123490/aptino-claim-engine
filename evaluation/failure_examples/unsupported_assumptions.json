@@ -1,0 +1,579 @@
+{
+  "case_id": "PUB-001",
+  "decision": "NEEDS_REVIEW",
+  "reason_code": "VALIDATION_FAILED",
+  "confidence": 0.0,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [],
+  "applicable_limits": [],
+  "missing_evidence": [
+    "A complete, validated policy assessment is required before deciding this claim."
+  ],
+  "next_action": "Check service configuration or review the validation trace, then retry.",
+  "citations": [],
+  "validation": {
+    "status": "FAIL",
+    "unsupported_claims": [
+      "Missing citation: Ambulance charges are not explicitly mentioned with a specific limit in the provided policy excerpts. However, they are generally considered part of covered expenses if medically necessary.",
+      "Missing citation: Ambulance charges are not explicitly mentioned with a specific limit in the provided policy excerpts. Assuming it is covered as a general expense.",
+      "Final decision conflicts with unresolved material evidence",
+      "The decision is not fully supported because the hospital's eligibility as per policy definition (registration or minimum criteria) is not confirmed, which is a prerequisite for claim admissibility."
+    ],
+    "structural_checks_passed": false,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The policy defines hospitalization as admission for a minimum of 24 consecutive hours for inpatient care. The patient's 96-hour admission exceeds this minimum."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The policy defines a hospital as an institution registered with local authorities OR one that complies with specific minimum criteria. While network status is mentioned, the case facts do not confirm either registration or the fulfillment of all minimum criteria (e.g., qualified nursing staff, minimum beds, qualified medical practitioner round the clock, operation theatre, daily records)."
+      },
+      {
+        "statement_index": 2,
+        "supported": true,
+        "explanation": "The policy states a 30-day waiting period for all claims. The policy started on 2025-01-01 and the claim date is 2026-03-14, which is well beyond 30 days."
+      },
+      {
+        "statement_index": 3,
+        "supported": true,
+        "explanation": "The provided policy excerpt lists specific diseases subject to a 1-year waiting period. Acute appendicitis and appendectomy are not included in this list."
+      },
+      {
+        "statement_index": 4,
+        "supported": true,
+        "explanation": "The provided policy excerpt for general exclusions does not list Acute appendicitis or Appendectomy as an excluded treatment or disease."
+      },
+      {
+        "statement_index": 5,
+        "supported": true,
+        "explanation": "The case facts explicitly state that the treatment for Acute appendicitis is not a pre-existing condition, therefore the pre-existing disease exclusion does not apply."
+      },
+      {
+        "statement_index": 6,
+        "supported": true,
+        "explanation": "The policy excerpt clearly states that 'Normal Room expenses: 1.0% of Basic Sum Insured' is a sub-limit for Room, Boarding and Nursing Expense."
+      },
+      {
+        "statement_index": 7,
+        "supported": true,
+        "explanation": "The policy excerpt explicitly states that 'Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs, Diagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial Limbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured'."
+      },
+      {
+        "statement_index": 8,
+        "supported": true,
+        "explanation": "The policy excerpt explicitly states that 'Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit of 25% of Sum Assured'."
+      },
+      {
+        "statement_index": 9,
+        "supported": true,
+        "explanation": "The policy defines Pre-Hospitalization Medical Expenses as those incurred immediately before hospitalization for the same condition, provided the inpatient claim is admissible, and notes coverage up to a maximum of 30 days immediately preceding hospitalization."
+      },
+      {
+        "statement_index": 10,
+        "supported": true,
+        "explanation": "The policy defines Post Hospitalization Medical Expenses as those incurred immediately after discharge for the same condition, provided the inpatient claim is admissible, and notes coverage up to a maximum of 60 days immediately following hospitalization."
+      },
+      {
+        "statement_index": 11,
+        "supported": true,
+        "explanation": "The provided policy excerpts do not contain any information regarding ambulance charges or specific limits for them."
+      },
+      {
+        "statement_index": 12,
+        "supported": true,
+        "explanation": "The calculation correctly applies the policy limit of 1.0% of the Basic Sum Insured (INR 500,000) per day, resulting in a daily limit of INR 5,000. For a 4-day stay, the total cap is INR 20,000."
+      },
+      {
+        "statement_index": 13,
+        "supported": true,
+        "explanation": "The calculation correctly applies the policy limit of 25% of the Sum Assured (INR 500,000) for doctor fees, resulting in a cap of INR 125,000."
+      },
+      {
+        "statement_index": 14,
+        "supported": true,
+        "explanation": "The calculation correctly applies the policy limit of 40% of the Sum Insured (INR 500,000) for medicines and diagnostics, resulting in a cap of INR 200,000."
+      },
+      {
+        "statement_index": 15,
+        "supported": true,
+        "explanation": "The statement accurately reflects the policy's coverage for pre-hospitalization expenses, which are covered if for the same condition and the inpatient claim is admissible, up to 30 days preceding hospitalization."
+      },
+      {
+        "statement_index": 16,
+        "supported": true,
+        "explanation": "The statement accurately reflects the policy's coverage for post-hospitalization expenses, which are covered if for the same condition and the inpatient claim is admissible, up to 60 days following hospitalization."
+      },
+      {
+        "statement_index": 17,
+        "supported": true,
+        "explanation": "The provided policy excerpts do not mention specific limits or coverage details for ambulance charges, making the assumption of general coverage reasonable in the absence of explicit exclusion or limits."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 2435.39,
+      "details": {
+        "dimensions": [
+          "Hospitalization Admissibility",
+          "Waiting Periods",
+          "Policy Exclusions",
+          "Expense Limits",
+          "Required Documentation"
+        ],
+        "queries": [
+          "policy definition of inpatient hospitalization",
+          "waiting period for appendectomy or acute appendicitis",
+          "exclusions for appendectomy or acute appendicitis",
+          "policy limits for room charges, doctor fees, medicines, diagnostics, pre-hospitalization, post-hospitalization, and ambulance",
+          "required documents for inpatient claim"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 2487.39,
+      "details": {
+        "query_count": 9,
+        "result_count": 19,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-2c32d4e488c3",
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-95b230af9b2c",
+          "clause-ba3cda6ca8a8",
+          "clause-2a8cae278105",
+          "clause-63f09648d041",
+          "clause-7baacc065aee",
+          "clause-b4c5d1e4340f",
+          "clause-6fdf886a8887",
+          "clause-e6020a8de5ce"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 20358.53,
+      "details": {
+        "findings": 12,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 10968.29,
+      "details": {
+        "status": "FAIL",
+        "checked_statements": 18,
+        "defects": [
+          "Missing citation: The hospital is a network provider, which supports its recognition as a valid institution for treatment.",
+          "Missing citation: Ambulance charges are not explicitly mentioned with a specific limit in the provided policy excerpts. However, they are generally considered part of covered expenses if medically necessary.",
+          "Network provider status alone does not prove the hospital meets the policy's definition of a hospital, which requires registration or specific minimum criteria. The excerpt does not provide the definition of a hospital.",
+          "The calculation for the room expense cap and allowed amount in statement 12 is incorrect. The cap should be calculated for the total admission hours, not per day, if the policy does not specify a daily limit for the total stay."
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 13620.41,
+      "details": {
+        "findings": 12,
+        "attempt": 2
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 11744.96,
+      "details": {
+        "status": "FAIL",
+        "checked_statements": 18,
+        "defects": [
+          "Missing citation: Ambulance charges are not explicitly mentioned with a specific limit in the provided policy excerpts. However, they are generally considered part of covered expenses if medically necessary.",
+          "Missing citation: Ambulance charges are not explicitly mentioned with a specific limit in the provided policy excerpts. Assuming it is covered as a general expense.",
+          "Final decision conflicts with unresolved material evidence",
+          "The decision is not fully supported because the hospital's eligibility as per policy definition (registration or minimum criteria) is not confirmed, which is a prerequisite for claim admissibility."
+        ]
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.55,
+      "details": {
+        "decision": "NEEDS_REVIEW",
+        "reason_code": "VALIDATION_FAILED"
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital definition registered OR minimum criteria medically necessary treatment",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.8267024755477905,
+            "bm25_score": 16.43539589519847,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9980465173721313
+          },
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 2,
+            "dense_score": 0.770870566368103,
+            "bm25_score": 11.555412317011175,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.99798583984375
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 3,
+            "dense_score": 0.6583521366119385,
+            "bm25_score": 14.078474294193667,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.9915187954902649
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6931402087211609,
+            "bm25_score": 8.540601353278598,
+            "rrf_score": 0.030090497737556562,
+            "rerank_score": 0.958306610584259
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "policy definition of inpatient hospitalization",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-95b230af9b2c",
+            "rank": 1,
+            "dense_score": 0.7101424932479858,
+            "bm25_score": 7.8043523498791405,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.9930065870285034
+          },
+          {
+            "chunk_id": "clause-ba3cda6ca8a8",
+            "rank": 2,
+            "dense_score": 0.6903061270713806,
+            "bm25_score": 4.2100903488994765,
+            "rrf_score": 0.014705882352941176,
+            "rerank_score": 0.9889650344848633
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.7196380496025085,
+            "bm25_score": 5.802652357965391,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.9850592613220215
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.8147250413894653,
+            "bm25_score": 5.384784528619445,
+            "rrf_score": 0.031099324975891997,
+            "rerank_score": 0.9798868894577026
+          }
+        ]
+      },
+      {
+        "query": "waiting period for appendectomy or acute appendicitis",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.6939387321472168,
+            "bm25_score": 8.218193242361579,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.3877229690551758
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.6868001222610474,
+            "bm25_score": 6.815619202895431,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.006541228387504816
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6318330764770508,
+            "bm25_score": 3.52417959066063,
+            "rrf_score": 0.029236022193768675,
+            "rerank_score": 0.00025059570907615125
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 4,
+            "dense_score": 0.6440839767456055,
+            "bm25_score": 1.668849461828351,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.00020551260968204588
+          }
+        ]
+      },
+      {
+        "query": "exclusions for appendectomy or acute appendicitis",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-7baacc065aee",
+            "rank": 1,
+            "dense_score": 0.5826643109321594,
+            "bm25_score": 3.6701001599169625,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.0006409712368622422
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7257083058357239,
+            "bm25_score": 1.668849461828351,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.00022896686277817935
+          },
+          {
+            "chunk_id": "clause-b4c5d1e4340f",
+            "rank": 3,
+            "dense_score": 0.5396842360496521,
+            "bm25_score": 5.810476377538929,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.00019314317614771426
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.7059248685836792,
+            "bm25_score": 1.3996845427627354,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.00016829966625664383
+          }
+        ]
+      },
+      {
+        "query": "policy limits for room charges, doctor fees, medicines, diagnostics, pre-hospitalization, post-hospitalization, and ambulance",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-ba3cda6ca8a8",
+            "rank": 1,
+            "dense_score": 0.6550209522247314,
+            "bm25_score": 13.81759563205423,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.9197105169296265
+          },
+          {
+            "chunk_id": "clause-95b230af9b2c",
+            "rank": 2,
+            "dense_score": 0.6426340341567993,
+            "bm25_score": 14.769607712673468,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.8687819242477417
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6737185716629028,
+            "bm25_score": 1.6183958068269941,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.43195876479148865
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 4,
+            "dense_score": 0.7127570509910583,
+            "bm25_score": 15.164983455495449,
+            "rrf_score": 0.03177805800756621,
+            "rerank_score": 0.4196403920650482
+          }
+        ]
+      },
+      {
+        "query": "required documents for inpatient claim",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 1,
+            "dense_score": 0.7485234141349792,
+            "bm25_score": 4.066278367744404,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.4823903441429138
+          },
+          {
+            "chunk_id": "clause-6fdf886a8887",
+            "rank": 2,
+            "dense_score": 0.6669163703918457,
+            "bm25_score": 0.2672663246609769,
+            "rrf_score": 0.015151515151515152,
+            "rerank_score": 0.031198775395751
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 3,
+            "dense_score": 0.6424305438995361,
+            "bm25_score": 3.887646105359201,
+            "rrf_score": 0.014925373134328358,
+            "rerank_score": 0.0031184337567538023
+          },
+          {
+            "chunk_id": "clause-95b230af9b2c",
+            "rank": 4,
+            "dense_score": 0.6330984830856323,
+            "bm25_score": 8.212651906311862,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.0016475077718496323
+          }
+        ]
+      },
+      {
+        "query": "Ambulance 1000 Pre Hospitalisation 30 days Post Hospitalisation 60 days same condition",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-e6020a8de5ce",
+            "rank": 1,
+            "dense_score": 0.7683037519454956,
+            "bm25_score": 30.38572879224041,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9969136714935303
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7185543179512024,
+            "bm25_score": 17.6004072218799,
+            "rrf_score": 0.03225806451612903,
+            "rerank_score": 0.8159806132316589
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6988367438316345,
+            "bm25_score": 7.70213399605388,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.118886299431324
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 4,
+            "dense_score": 0.694025456905365,
+            "bm25_score": 9.471980005072083,
+            "rrf_score": 0.030536130536130537,
+            "rerank_score": 0.0422637015581131
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 19,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-2.5-flash",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 61636.6
+}
