@@ -1,0 +1,19 @@
+Subject: Aptino AI Engineer take-home assignment submission
+
+Hello,
+
+Please find my Policy-Aware Multi-Agent RAG Claim Decision Engine submission below.
+
+GitHub repository: [insert the public repository URL]
+Live application: [insert the deployed application URL]
+API documentation: [insert the deployed application URL]/docs
+Health endpoint: [insert the deployed application URL]/health
+
+The repository includes the implementation, local setup instructions, architecture diagram and design note, evaluation script, results for all 12 supplied cases, and 9 additional test cases with results. The evaluation report explains the reference-outcome assumptions, retrieval and citation metrics, failure analysis, and known limitations.
+
+The application uses LangChain with Gemini, a LangGraph specialist workflow, dense and BM25 retrieval, cross-encoder reranking, and an evidence-validation gate. Reviewers can inspect policy citations and execution traces in the interface.
+
+Thank you for the opportunity. I look forward to discussing the design and implementation.
+
+Best regards,
+[your name]

@@ -1,0 +1,191 @@
+[
+  {
+    "case_id": "PUB-001",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Hospital definition and pre/post expense timing are not established; room basis is ambiguous.",
+    "evidence_anchors": [
+      "Hospital means",
+      "Normal Room expenses",
+      "Ambulance charges",
+      "Pre-Hospitalisation up to"
+    ]
+  },
+  {
+    "case_id": "PUB-002",
+    "decision": "NOT_ADMISSIBLE",
+    "rationale": "Claim occurs during the first 30 days without qualifying continuity.",
+    "evidence_anchors": [
+      "30 days Waiting Period"
+    ]
+  },
+  {
+    "case_id": "PUB-003",
+    "decision": "NOT_ADMISSIBLE",
+    "rationale": "27 months is below the 48-month pre-existing disease waiting period, with no prior insurer credit.",
+    "evidence_anchors": [
+      "Pre-existing diseases will not be covered until 48 months"
+    ]
+  },
+  {
+    "case_id": "PUB-004",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Home-treatment trigger is asserted, but treatment duration and diagnosis exclusion checks are unresolved.",
+    "evidence_anchors": [
+      "Domiciliary Treat",
+      "20% of the Basic Sum Insured",
+      "Any expense under Domiciliary"
+    ]
+  },
+  {
+    "case_id": "PUB-005",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Eye surgery has a short-stay provision, but hospital-definition and pre/post evidence remain incomplete.",
+    "evidence_anchors": [
+      "NB4:",
+      "Hospital means",
+      "Pre-Hospitalisation up to"
+    ]
+  },
+  {
+    "case_id": "PUB-006",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Hospital registration and medical necessity are explicitly unknown; itemized bill absent.",
+    "evidence_anchors": [
+      "Hospital means",
+      "Medically Necessary",
+      "original/attested photocopies"
+    ]
+  },
+  {
+    "case_id": "PUB-007",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "General expense category caps apply; cancer does not establish optional additional cover, and eligibility/timing evidence is missing.",
+    "evidence_anchors": [
+      "25% of Sum Assured",
+      "40% Sum Insured",
+      "Critical Illness Cover"
+    ]
+  },
+  {
+    "case_id": "PUB-008",
+    "decision": "NOT_ADMISSIBLE",
+    "rationale": "The supplied treatment is cosmetic surgery for a cosmetic condition, matching the operative exclusion.",
+    "evidence_anchors": [
+      "cosmetic or aesthetic treatment"
+    ]
+  },
+  {
+    "case_id": "PUB-009",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "30/60-day windows and same condition are asserted, but hospital qualification remains unestablished.",
+    "evidence_anchors": [
+      "Pre-Hospitalisation up to",
+      "Hospital means"
+    ]
+  },
+  {
+    "case_id": "PUB-010",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "One completed prior eligible year and received claim history can waive the first-year cataract wait; hospital qualification still missing.",
+    "evidence_anchors": [
+      "first year of operation",
+      "NB4:",
+      "Hospital means"
+    ]
+  },
+  {
+    "case_id": "PUB-011",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Non-network status is not itself exclusion; neither registration nor minimum hospital criteria are established.",
+    "evidence_anchors": [
+      "Hospital means"
+    ]
+  },
+  {
+    "case_id": "PUB-012",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Experimental definition alone is not an operative exclusion; approval/established-practice and eligibility evidence remain unresolved.",
+    "evidence_anchors": [
+      "Unproven/Experimental Treatment",
+      "treatments not approved",
+      "Medically Necessary"
+    ]
+  },
+  {
+    "case_id": "CAND-001",
+    "decision": "ADMISSIBLE",
+    "rationale": "Explicit eligibility facts, no waiting/exclusion trigger and expenses below relevant category caps.",
+    "evidence_anchors": [
+      "WHAT WE COVER",
+      "25% of Sum Assured",
+      "40% Sum Insured"
+    ]
+  },
+  {
+    "case_id": "CAND-002",
+    "decision": "ADMISSIBLE_WITH_LIMITS",
+    "rationale": "Doctor category capped at 125000 and medicines/diagnostics at 200000 for 500000 basic sum insured.",
+    "evidence_anchors": [
+      "25% of Sum Assured",
+      "40% Sum Insured"
+    ]
+  },
+  {
+    "case_id": "CAND-003",
+    "decision": "NOT_ADMISSIBLE",
+    "rationale": "Pre-existing condition at 12 months, without prior credit.",
+    "evidence_anchors": [
+      "Pre-existing diseases will not be covered until 48 months"
+    ]
+  },
+  {
+    "case_id": "CAND-004",
+    "decision": "NEEDS_REVIEW",
+    "rationale": "Registration unknown and complete alternative hospital criteria absent.",
+    "evidence_anchors": [
+      "Hospital means"
+    ]
+  },
+  {
+    "case_id": "CAND-005",
+    "decision": "NOT_ADMISSIBLE",
+    "rationale": "An explicitly outpatient consultation falls within the outpatient exclusion.",
+    "evidence_anchors": [
+      "treatment as an outpatient"
+    ]
+  },
+  {
+    "case_id": "CAND-006",
+    "decision": "PARTIALLY_ADMISSIBLE",
+    "rationale": "Core inpatient claim supported; 31-day pre and 61-day post expenses exceed policy windows.",
+    "evidence_anchors": [
+      "Pre-Hospitalisation up to"
+    ]
+  },
+  {
+    "case_id": "CAND-007",
+    "decision": "ADMISSIBLE",
+    "rationale": "Same supported claim as CAND-001; irrelevant text must not change outcome.",
+    "evidence_anchors": [
+      "WHAT WE COVER",
+      "25% of Sum Assured"
+    ]
+  },
+  {
+    "case_id": "CAND-008",
+    "decision": "NOT_ADMISSIBLE",
+    "rationale": "Domiciliary treatment lasting two days falls under the not-exceeding-three-days provision.",
+    "evidence_anchors": [
+      "Any expense under Domiciliary"
+    ]
+  },
+  {
+    "case_id": "CAND-009",
+    "decision": "ADMISSIBLE",
+    "rationale": "Explicit day-care and hospital evidence plus qualifying prior year/received history; claimed categories below caps.",
+    "evidence_anchors": [
+      "first year of operation",
+      "NB4:"
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Policy Review · Claim workspace</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="/"><span class="brand-icon">P</span> Policy Review</a><span class="top-label">CLAIM DECISION WORKSPACE</span><a href="/docs" target="_blank" rel="noopener">API docs ↗</a></header>
+  <main>
+    <div class="intro"><div><p class="eyebrow">EVIDENCE BEFORE DECISIONS</p><h1>A clear decision.<br><span>A traceable reason.</span></h1><p class="lede">Review a health insurance claim against the policy wording, with specialist findings and source evidence in one place.</p></div><div class="policy-card"><span class="small-label">ACTIVE POLICY</span><strong>CSC Individual Health Insurance</strong><span>Universal Sompo · 2017–2018 wording</span><a href="/policy" target="_blank" rel="noopener">Open source policy ↗</a><div id="health" role="status" class="health">Checking service…</div></div></div>
+    <div class="workspace">
+      <section class="input-panel"><div class="section-title"><span class="step">01</span><h2>Claim input</h2></div><label for="case-select">Start with a supplied case</label><select id="case-select"><option>Loading cases…</option></select><div id="case-summary" class="case-summary"></div><div class="input-actions"><label class="upload" for="upload">↑ Upload JSON</label><input id="upload" type="file" accept=".json,application/json" hidden><button id="format" class="text-button" type="button">Format JSON</button></div><label for="case-json" class="small-label">CASE DATA · EDIT OR PASTE</label><textarea id="case-json" spellcheck="false" aria-label="Claim JSON"></textarea><details class="access"><summary>Reviewer access token (if required)</summary><input id="token" type="password" autocomplete="off" placeholder="Token supplied by the host"><small>Used only for this request; never saved.</small></details><button id="analyze" class="primary" disabled>Analyze claim <span>→</span></button><p class="input-note">Synthetic cases only. Decisions use the supplied policy; missing evidence is flagged for review.</p></section>
+      <section class="result-panel" aria-live="polite"><div class="section-title"><span class="step">02</span><h2>Review outcome</h2><button id="download" class="text-button" hidden>↓ Download result</button></div><div id="error" role="alert" hidden></div><div id="loading" hidden><div class="spinner"></div><h3>Reviewing the policy evidence</h3><p>Planning → retrieving → assessing → validating</p><p id="timer">0 seconds elapsed</p><small>Validation may trigger one correction pass. Please keep this page open.</small></div><div id="empty"><div class="empty-mark">◎</div><h3>Every decision starts with evidence.</h3><p>Select a claim and run the review to see its coverage assessment, cited policy clauses and execution trace.</p><div class="empty-tags"><span>Hybrid retrieval</span><span>Specialist agents</span><span>Citation validation</span></div></div><div id="result" hidden></div></section>
+    </div>
+    <footer><span>Built for inspectable claim review.</span><span>Policy wording is the source of truth · Confidence is not a payment guarantee.</span></footer>
+  </main>
+</body>
+</html>
