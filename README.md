@@ -12,6 +12,9 @@ pinned: false
 
 A policy-grounded health insurance claim review service built for the Aptino AI Engineer assignment. It returns a machine-readable decision, source clauses, conditional limits, missing evidence and an auditable execution trace.
 
+**Live application:** https://aptino-policy-review.onrender.com  
+**API documentation:** https://aptino-policy-review.onrender.com/docs
+
 The application uses **Gemini through LangChain**, **LangGraph**, **FastAPI**, local **BGE embeddings**, **BM25**, reciprocal rank fusion and a **TinyBERT cross-encoder reranker**. A lightweight browser frontend is served by FastAPI, so the website and API share one deployment.
 
 ## Run locally

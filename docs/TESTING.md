@@ -23,6 +23,8 @@ The tests do not require a Gemini key or model downloads. They cover:
 
 A live browser smoke test loaded the frontend, selected PUB-002, submitted it to `/analyze`, received NOT_ADMISSIBLE with PASS validation, displayed policy citations, and expanded the five-step execution trace. `/health` reported the configured model and 125 indexed clauses. This was a real Gemini request, not a mocked response.
 
+The public Render deployment was also checked after release. The UI, `/docs`, `/cases` and `/policy` returned HTTP 200; `/health` reported ready with 125 clauses. A real PUB-003 request returned NOT_ADMISSIBLE with PASS validation, one citation and a five-step trace. A preceding PUB-002 request was withheld as VALIDATION_FAILED, confirming that model variation fails closed instead of publishing an unsupported answer.
+
 The design note was rendered and visually inspected as a two-page PDF. The delivery archive is separately scanned to exclude the Gemini key, `.env`, model caches, virtual environments and Git internals.
 
 The model evaluation is distinct from these engineering tests. Its measured outcomes and limitations are in `docs/EVALUATION.md` and `evaluation/results/`.

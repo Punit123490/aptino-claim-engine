@@ -5,9 +5,9 @@ Hello,
 Please find my Policy-Aware Multi-Agent RAG Claim Decision Engine submission below.
 
 GitHub repository: https://github.com/Punit123490/aptino-claim-engine
-Live application: [insert the deployed application URL]
-API documentation: [insert the deployed application URL]/docs
-Health endpoint: [insert the deployed application URL]/health
+Live application: https://aptino-policy-review.onrender.com
+API documentation: https://aptino-policy-review.onrender.com/docs
+Health endpoint: https://aptino-policy-review.onrender.com/health
 
 The repository includes the implementation, local setup instructions, architecture diagram and design note, evaluation script, results for all 12 supplied cases, and 9 additional test cases with results. The evaluation report explains the reference-outcome assumptions, retrieval and citation metrics, failure analysis, and known limitations.
 

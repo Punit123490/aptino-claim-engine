@@ -11,6 +11,10 @@ Before sending the submission, record the actual URLs in your email:
 
 Repository: https://github.com/Punit123490/aptino-claim-engine
 
+Live application: https://aptino-policy-review.onrender.com  
+API documentation: https://aptino-policy-review.onrender.com/docs  
+Health endpoint: https://aptino-policy-review.onrender.com/health
+
 Do not send a localhost address or a deployment that is still building.
 
 ## GitHub publication
