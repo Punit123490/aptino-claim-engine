@@ -1,60 +1,63 @@
 {
-  "case_id": "PUB-001",
+  "case_id": "PUB-007",
   "decision": "NEEDS_REVIEW",
   "reason_code": "INSUFFICIENT_EVIDENCE",
   "confidence": 0.5,
   "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
   "key_findings": [
     {
-      "dimension": "Inpatient hospitalization eligibility",
-      "statement": "The patient was admitted for 96 hours, exceeding the 24-hour minimum requirement for inpatient hospitalization.",
+      "dimension": "Coverage eligibility for cancer treatment",
+      "statement": "The policy covers hospitalization for medical/surgical treatment of illness, including cancer, provided it is medically necessary and prescribed by a medical practitioner.",
       "effect": "supports",
       "evidence_ids": [
-        "clause-2a8cae278105"
+        "clause-4840074a0643",
+        "clause-2c32d4e488c3"
       ],
-      "fact_paths": [
-        "case.treatment.admission_hours"
-      ]
+      "fact_paths": []
     },
     {
-      "dimension": "Waiting period for acute conditions",
-      "statement": "The policy requires a 30-day waiting period for all claims unless the insured has continuous coverage. The insured has 14 months of continuous coverage, satisfying the waiver condition.",
+      "dimension": "Waiting period for specific diseases",
+      "statement": "The insured has 31 months of continuous coverage, exceeding the 1-year waiting period for specific diseases and the 30-day initial waiting period.",
       "effect": "supports",
       "evidence_ids": [
-        "clause-5264357920b8"
+        "clause-5264357920b8",
+        "clause-188173fa6d60"
       ],
-      "fact_paths": [
-        "case.continuous_coverage_months"
-      ]
+      "fact_paths": []
     },
     {
       "dimension": "Room rent sub-limits",
-      "statement": "Room rent is capped at 1% of the Basic Sum Insured (500,000 INR), resulting in a limit of 5,000 INR per day.",
+      "statement": "Normal room expenses are limited to 1% of the Basic Sum Insured (10,000 INR).",
       "effect": "limits",
       "evidence_ids": [
         "clause-055297dc8d0f"
       ],
-      "fact_paths": [
-        "case.sum_insured_inr"
-      ]
+      "fact_paths": []
     },
     {
-      "dimension": "Ambulance service coverage",
+      "dimension": "Doctor fee coverage limits",
+      "statement": "Medical practitioner and surgeon fees are limited to 25% of the Sum Insured (250,000 INR).",
+      "effect": "limits",
+      "evidence_ids": [
+        "clause-3371f7e3f0bd"
+      ],
+      "fact_paths": []
+    },
+    {
+      "dimension": "Medicine and diagnostic expense caps",
+      "statement": "Expenses for medicines, drugs, and diagnostic materials are limited to 40% of the Sum Insured (400,000 INR).",
+      "effect": "limits",
+      "evidence_ids": [
+        "clause-ea9845a19c83"
+      ],
+      "fact_paths": []
+    },
+    {
+      "dimension": "Ambulance charges",
       "statement": "Ambulance charges are limited to 1% of the Basic Sum Insured or 1,000 INR, whichever is less.",
       "effect": "limits",
       "evidence_ids": [
         "clause-d0f0ccf0f804"
-      ],
-      "fact_paths": [
-        "case.sum_insured_inr"
-      ]
-    },
-    {
-      "dimension": "Pre/Post hospitalization coverage",
-      "statement": "Pre-hospitalization (30 days) and post-hospitalization (60 days) expenses are covered subject to the overall Sum Insured.",
-      "effect": "supports",
-      "evidence_ids": [
-        "clause-e6020a8de5ce"
       ],
       "fact_paths": []
     },
@@ -73,20 +76,42 @@
   ],
   "applicable_limits": [
     {
-      "category": "room",
-      "description": "The policy states a 1% basic-sum-insured normal-room sub-limit, but its duration basis is not explicit. Confirm the billing basis before calculating an allowed amount.",
-      "claimed_inr": 30000.0,
-      "cap_inr": null,
-      "allowed_inr": null,
+      "category": "Room Rent",
+      "description": "1% of 1,000,000 INR",
+      "claimed_inr": 80000.0,
+      "cap_inr": 10000.0,
+      "allowed_inr": 10000.0,
       "evidence_ids": [
         "clause-055297dc8d0f"
       ],
       "conditional": true
     },
     {
-      "category": "ambulance",
-      "description": "Ambulance charges limited to 1% of Sum Insured or 1,000 INR, whichever is less.",
-      "claimed_inr": 1200.0,
+      "category": "Doctor Fees",
+      "description": "25% of 1,000,000 INR",
+      "claimed_inr": 300000.0,
+      "cap_inr": 250000.0,
+      "allowed_inr": 250000.0,
+      "evidence_ids": [
+        "clause-3371f7e3f0bd"
+      ],
+      "conditional": true
+    },
+    {
+      "category": "Medicines and Diagnostics",
+      "description": "40% of 1,000,000 INR",
+      "claimed_inr": 500000.0,
+      "cap_inr": 400000.0,
+      "allowed_inr": 400000.0,
+      "evidence_ids": [
+        "clause-ea9845a19c83"
+      ],
+      "conditional": true
+    },
+    {
+      "category": "Ambulance",
+      "description": "Lesser of 1% of Sum Insured or 1,000 INR",
+      "claimed_inr": 1500.0,
       "cap_inr": 1000.0,
       "allowed_inr": 1000.0,
       "evidence_ids": [
@@ -99,21 +124,32 @@
     "Evidence that the facility is registered as a hospital or satisfies all alternative minimum criteria.",
     "Confirmation of the normal-room sub-limit billing basis before calculating a payable room amount."
   ],
-  "next_action": "Verify the exact number of days the patient was in the room to confirm the daily room rent calculation against the 5,000 INR/day limit.",
+  "next_action": "Process payment for the allowed amounts totaling 661,000 INR (10,000 + 250,000 + 400,000 + 1,000 + 10,000 pre-hosp + 15,000 post-hosp) subject to verification of pre/post-hospitalization connection to the admitted condition.",
   "citations": [
     {
-      "claim": "The patient was admitted for 96 hours, exceeding the 24-hour minimum requirement for inpatient hospitalization.",
+      "claim": "The policy covers hospitalization for medical/surgical treatment of illness, including cancer, provided it is medically necessary and prescribed by a medical practitioner.",
       "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-      "page": 3,
+      "page": 1,
       "pages": [
-        3
+        1
       ],
-      "section": "DEFINITIONS / Hospitalization means admission in a Hospital for a minimum period of 24 In -patient Care",
-      "chunk_id": "clause-2a8cae278105",
-      "quote": "Hospitalization means admission in a Hospital for a minimum period of 24 In -patient Care\nconsecutive hours except for specified procedu res/ treatments, where such admission could be for a\nperiod of less than 24 consecutive hours."
+      "section": "Policy contract",
+      "chunk_id": "clause-4840074a0643",
+      "quote": "CSC – INDIVIDUAL HEALTH INSURANCE\nPROSPECTUS\nThis Policy is an evidence of the contract between You and Universal Sompo General Insurance\nCompany Limited. The information furnished by You/ in the Proposal form and the declaration signed\nby You forms the basis of this contract.\nThe Policy, the Schedule and any Endorsement shall be read together and any word or expression to\nwhich a specific meaning has been attached in any part of this Policy or of Schedule shall bear such\nmeaning whenever it may appear.\nThis Policy witnesses that in consideration of Your having paid the premium for the Policy Period\nstated in the Schedule or further period of insurance for which We may accept the premium for\nrenewal of this Policy, We undertake that if during the period of insurance or during the continuance\nof this Policy by renewal You contact any disease or suffer from any Illness or sustain any Bodily\nInjury through Accident and if such disease or injury shall require, upon the advices of a qualified\nMedical Practitioner, Hospitalization for medical/surgical treatment in any Nursing Home/Hospital in\nIndia, or Domiciliary Hospitalization as defined in the Policy, We will pay to You the amount of\nsuch expenses as may be reasonably and necessarily incurred in respe ct thereof as stated in the\nSchedule but not exceeding the Sum Insured in aggregate in any one period of insurance provided\nthat all the terms, conditions and exceptions of this Policy in so far as they relate to anything to be\ndone or complied with by You have been met."
     },
     {
-      "claim": "The policy requires a 30-day waiting period for all claims unless the insured has continuous coverage. The insured has 14 months of continuous coverage, satisfying the waiver condition.",
+      "claim": "The policy covers hospitalization for medical/surgical treatment of illness, including cancer, provided it is medically necessary and prescribed by a medical practitioner.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 4,
+      "pages": [
+        4
+      ],
+      "section": "DEFINITIONS / Medically Necessary means any treatment, tests, medication, or stay in Hospital or part of a stay in",
+      "chunk_id": "clause-2c32d4e488c3",
+      "quote": "Medically Necessary means any treatment, tests, medication, or stay in Hospital or part of a stay in\nHospital which\n is required for the medical management of the Illness or Injury suffered by the ins ured;\n must not exceed the level of care necessary to provide safe, adequate and appropriate medical\ncare in scope, duration, or intensity;\n must have been prescribed by a Medical Practitioner,\n must conform to the professional standards widely accepted in i nternational medical practice or\nby the medical community in India."
+    },
+    {
+      "claim": "The insured has 31 months of continuous coverage, exceeding the 1-year waiting period for specific diseases and the 30-day initial waiting period.",
       "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
       "page": 9,
       "pages": [
@@ -124,7 +160,18 @@
       "quote": "2. 30 days Waiting Period\nA waiting period of 30 days will apply to all claims unless:\n You have been insured under this Policy continuously and without any break in the previous Policy Year,\nor\n You were insured continuously and without interruption for at least 1 year under any other Indian\ninsurer's individual health insurance Policy for the reimbursement of medical costs for inpatient\ntreatment in a Hospital, and You establish to Our satisfaction that You were unaware of and had not taken\nany advice or medication for such Illness or treatment.\n If You renew with Us or transfer from any other insurer and increase the Sum Insured (other than as a\nresult of the application of Cumulative Bonus upon Renewal with Us, then this exclusion shall only apply\nin relation to the amount by which the Sum Insured has been increased."
     },
     {
-      "claim": "Room rent is capped at 1% of the Basic Sum Insured (500,000 INR), resulting in a limit of 5,000 INR per day.",
+      "claim": "The insured has 31 months of continuous coverage, exceeding the 1-year waiting period for specific diseases and the 30-day initial waiting period.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 9,
+      "pages": [
+        9
+      ],
+      "section": "WHAT WE EXCLUDE / 3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the",
+      "chunk_id": "clause-188173fa6d60",
+      "quote": "3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the\nfollowing Diseases:\ni) Cataract\nii) Benign Prostatic Hypertrophy\niii) Myomectomy, Hysterectomy\niv) Hernia, Hydrocele\nv) Fistula in anus, Piles\nvi) Arthritis, Gout, Rheumatism\nvii) Joint replacement unless due to accident\nviii) Sinusitis and related disorders\nix) Stone in the urinary and biliary systems\nx) Dilatation and Curettage\nxi) Skin and all internal tumors/ cysts/ nodules/ polyps of any kind, including breast lumps unless\nmalignant, adenoids and hemorrhoids\nxii) Dialysis required for rental failure\nxiii) Surgery on tonsils and sinuses\nxiv) Gastric and duodenal ulcers\nHowever, a waiting period of 1 year will not apply if You were insured continuously and without interruption\nfor at least 1 year under Our or any other Indian insurer's individual health insurance Policy for the\nreimbursement of medical costs for inpatient treatment in a Hospital.\nNB: The reduction in the waiting period specified above shall be applied subject to the following:\n We will only apply the reduction of the waiting period if We have received the database and claim\nhistory from the previous Indian insurance Company (if applicable);\n We are under no obligation to insure all Insured Persons or to insure all Insured Persons on the\nproposed terms, or on the same terms as the previous health insurance Policy even if You have\nsubmitted to Us all documentation\n We shall consider only completed years of coverage for waiver of waiting periods."
+    },
+    {
+      "claim": "Normal room expenses are limited to 1% of the Basic Sum Insured (10,000 INR).",
       "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
       "page": 7,
       "pages": [
@@ -133,6 +180,28 @@
       "section": "WHAT WE COVER / 1. Room, Boarding and Nursing Expense as provided in the Hospital/Nursing Home subject to following",
       "chunk_id": "clause-055297dc8d0f",
       "quote": "1. Room, Boarding and Nursing Expense as provided in the Hospital/Nursing Home subject to following\nlimits.\nSub limits\na) Normal Room expenses: 1.0% of Basic Sum Insured.\nb) Sub limit per day for Intensive Care/ Therapeutic Unit expenses: 2% of Basic Sum Insured.\nc) Registration Charges of Hospital/ Nursing Home : Actuals"
+    },
+    {
+      "claim": "Medical practitioner and surgeon fees are limited to 25% of the Sum Insured (250,000 INR).",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit",
+      "chunk_id": "clause-3371f7e3f0bd",
+      "quote": "2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit\nof 25% of Sum Assured."
+    },
+    {
+      "claim": "Expenses for medicines, drugs, and diagnostic materials are limited to 40% of the Sum Insured (400,000 INR).",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,",
+      "chunk_id": "clause-ea9845a19c83",
+      "quote": "3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,\nDiagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial\nLimbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured ."
     },
     {
       "claim": "Ambulance charges are limited to 1% of the Basic Sum Insured or 1,000 INR, whichever is less.",
@@ -146,17 +215,6 @@
       "quote": "4. Additional Benefits:\na) An additional Daily Allowance amount equivalent to 0.1% of the Basic Sum Insured or Rs. 250/ -\nper day whichever is less, for the duration of Hospitalization towards miscellaneous expenses.\nThe maximum amount payable under this extens ions is limited to Rs 2500/ -\nb) Ambulance charges in connection with any admissible claim limited to 1.0% of the Basic Sum\nInsured or Rupees 1000/- whichever is less for each claim."
     },
     {
-      "claim": "Pre-hospitalization (30 days) and post-hospitalization (60 days) expenses are covered subject to the overall Sum Insured.",
-      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
-      "page": 8,
-      "pages": [
-        8
-      ],
-      "section": "WHAT WE COVER / Note",
-      "chunk_id": "clause-e6020a8de5ce",
-      "quote": "Note\nPre-Hospitalisation up to a maximum of 30 days immediately preceding Hospitalisation and Post\nHospitalisation expenses up to a maximum of 60 days immediately following Hospitalisation will also be\nreimbursed along with the aforesaid Hospitalisation expenses subject to the Your overall Sum Insured\nlimit. Any Nursing expenses during Pre and Post Hospitalisation will be considered only if Qualified Nurse\nis employed on the advice of the attending Medical Practitioner for the duration specified"
-    },
-    {
       "claim": "The policy requires hospital registration or compliance with all minimum criteria; the supplied facts establish neither route.",
       "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
       "page": 3,
@@ -168,7 +226,7 @@
       "quote": "Hospital means any institution established for in -patient care and Day Care Treatment of Illness\nand/or Injuries and which has been registered as a Hospital wit h the local authorities under the\nClinical Establishments (Registration and Regulation) Act, 2010 or under the enactments specified\nunder the Schedule of Section 56(1) of the said Act OR complies with all minimum criteria as under:\n has qualified nursing staff under its employment round the clock;\n has at least 10 in-patient beds in towns having a population of less than 10,00,000 and at least 15\nin-patient beds in all other places;\n has qualified Medical Practitioner(s) in charge round the clock;\n has a fully equipped operation theatre of its own where Surgical Procedures are carried out;\n maintains daily records of patients and makes these accessible to the insurance Company's\nauthorized personnel."
     },
     {
-      "claim": "{\"category\":\"room\",\"description\":\"The policy states a 1% basic-sum-insured normal-room sub-limit, but its duration basis is not explicit. Confirm the billing basis before calculating an allowed amount.\",\"claimed_inr\":30000.0,\"cap_inr\":null,\"allowed_inr\":null,\"evidence_ids\":[\"clause-055297dc8d0f\"],\"conditional\":true}",
+      "claim": "{\"category\":\"Room Rent\",\"description\":\"1% of 1,000,000 INR\",\"claimed_inr\":80000.0,\"cap_inr\":10000.0,\"allowed_inr\":10000.0,\"evidence_ids\":[\"clause-055297dc8d0f\"],\"conditional\":true}",
       "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
       "page": 7,
       "pages": [
@@ -179,7 +237,29 @@
       "quote": "1. Room, Boarding and Nursing Expense as provided in the Hospital/Nursing Home subject to following\nlimits.\nSub limits\na) Normal Room expenses: 1.0% of Basic Sum Insured.\nb) Sub limit per day for Intensive Care/ Therapeutic Unit expenses: 2% of Basic Sum Insured.\nc) Registration Charges of Hospital/ Nursing Home : Actuals"
     },
     {
-      "claim": "{\"category\":\"ambulance\",\"description\":\"Ambulance charges limited to 1% of Sum Insured or 1,000 INR, whichever is less.\",\"claimed_inr\":1200.0,\"cap_inr\":1000.0,\"allowed_inr\":1000.0,\"evidence_ids\":[\"clause-d0f0ccf0f804\"],\"conditional\":true}",
+      "claim": "{\"category\":\"Doctor Fees\",\"description\":\"25% of 1,000,000 INR\",\"claimed_inr\":300000.0,\"cap_inr\":250000.0,\"allowed_inr\":250000.0,\"evidence_ids\":[\"clause-3371f7e3f0bd\"],\"conditional\":true}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit",
+      "chunk_id": "clause-3371f7e3f0bd",
+      "quote": "2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit\nof 25% of Sum Assured."
+    },
+    {
+      "claim": "{\"category\":\"Medicines and Diagnostics\",\"description\":\"40% of 1,000,000 INR\",\"claimed_inr\":500000.0,\"cap_inr\":400000.0,\"allowed_inr\":400000.0,\"evidence_ids\":[\"clause-ea9845a19c83\"],\"conditional\":true}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,",
+      "chunk_id": "clause-ea9845a19c83",
+      "quote": "3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,\nDiagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial\nLimbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured ."
+    },
+    {
+      "claim": "{\"category\":\"Ambulance\",\"description\":\"Lesser of 1% of Sum Insured or 1,000 INR\",\"claimed_inr\":1500.0,\"cap_inr\":1000.0,\"allowed_inr\":1000.0,\"evidence_ids\":[\"clause-d0f0ccf0f804\"],\"conditional\":true}",
       "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
       "page": 8,
       "pages": [
@@ -198,42 +278,57 @@
       {
         "statement_index": 0,
         "supported": true,
-        "explanation": "The patient was admitted for 96 hours, which satisfies the 24-hour minimum requirement for inpatient hospitalization defined in the policy."
+        "explanation": "The policy covers hospitalization for medical/surgical treatment of illness, including cancer, when medically necessary and prescribed by a medical practitioner."
       },
       {
         "statement_index": 1,
         "supported": true,
-        "explanation": "The policy waives the 30-day waiting period if the insured has been covered continuously for at least one year. The patient has 14 months of continuous coverage."
+        "explanation": "The insured has 31 months of continuous coverage, which satisfies the 30-day waiting period and the 1-year waiting period for specific diseases."
       },
       {
         "statement_index": 2,
         "supported": true,
-        "explanation": "The policy defines the normal room sub-limit as 1% of the Basic Sum Insured (500,000 INR), which equals 5,000 INR."
+        "explanation": "The policy limits normal room expenses to 1% of the Basic Sum Insured, which is 10,000 INR."
       },
       {
         "statement_index": 3,
         "supported": true,
-        "explanation": "The policy limits ambulance charges to 1% of the Basic Sum Insured or 1,000 INR, whichever is less. 1% of 500,000 is 5,000, so the 1,000 INR cap applies."
+        "explanation": "Medical practitioner and surgeon fees are subject to a limit of 25% of the Sum Insured, which is 250,000 INR."
       },
       {
         "statement_index": 4,
         "supported": true,
-        "explanation": "The policy explicitly covers pre-hospitalization (30 days) and post-hospitalization (60 days) expenses subject to the overall Sum Insured."
+        "explanation": "Expenses for medicines, drugs, and diagnostic materials are subject to a limit of 40% of the Sum Insured, which is 400,000 INR."
       },
       {
         "statement_index": 5,
         "supported": true,
-        "explanation": "The policy requires either registration as a hospital or compliance with specific minimum criteria (nursing staff, bed count, etc.). The case facts do not provide this information."
+        "explanation": "Ambulance charges are limited to 1% of the Basic Sum Insured or 1,000 INR, whichever is less."
       },
       {
         "statement_index": 6,
         "supported": true,
-        "explanation": "The policy specifies a 1% sub-limit for room expenses but does not explicitly state if this is a per-day or total limit, necessitating clarification."
+        "explanation": "The policy defines a hospital based on registration or specific minimum criteria; the case facts do not confirm either."
       },
       {
         "statement_index": 7,
         "supported": true,
-        "explanation": "The ambulance cap is correctly identified as 1,000 INR based on the policy limit of 1% of the Sum Insured or 1,000 INR, whichever is less."
+        "explanation": "The calculation correctly applies the 1% sub-limit for room rent."
+      },
+      {
+        "statement_index": 8,
+        "supported": true,
+        "explanation": "The calculation correctly applies the 25% sub-limit for doctor fees."
+      },
+      {
+        "statement_index": 9,
+        "supported": true,
+        "explanation": "The calculation correctly applies the 40% sub-limit for medicines and diagnostics."
+      },
+      {
+        "statement_index": 10,
+        "supported": true,
+        "explanation": "The calculation correctly applies the 1,000 INR cap for ambulance charges."
       }
     ]
   },
@@ -241,30 +336,30 @@
     {
       "agent": "Case Analysis",
       "action": "Identified decision dimensions and search plan",
-      "elapsed_ms": 3102.02,
+      "elapsed_ms": 11556.13,
       "details": {
         "dimensions": [
-          "Inpatient hospitalization eligibility",
-          "Waiting period for acute conditions",
+          "Coverage eligibility for cancer treatment",
+          "Waiting period for pre-existing or specific diseases",
           "Room rent sub-limits",
-          "Pre-hospitalization expense coverage",
-          "Post-hospitalization expense coverage",
-          "Ambulance service coverage"
+          "Doctor fee coverage limits",
+          "Medicine and diagnostic expense caps",
+          "Pre and post-hospitalization coverage duration and limits"
         ],
         "queries": [
-          "USGIC-CSC-2017-2018 inpatient admission minimum duration requirement",
-          "USGIC-CSC-2017-2018 waiting period for acute appendicitis",
+          "USGIC-CSC-2017-2018 coverage for cancer treatment",
+          "USGIC-CSC-2017-2018 waiting period for cancer",
           "USGIC-CSC-2017-2018 room rent sub-limit policy",
-          "USGIC-CSC-2017-2018 pre-hospitalization coverage duration and limits",
-          "USGIC-CSC-2017-2018 post-hospitalization coverage duration and limits",
-          "USGIC-CSC-2017-2018 ambulance service coverage criteria"
+          "USGIC-CSC-2017-2018 doctor fee reimbursement limits",
+          "USGIC-CSC-2017-2018 medicine and diagnostic expense limits",
+          "USGIC-CSC-2017-2018 pre and post-hospitalization coverage period"
         ]
       }
     },
     {
       "agent": "Policy Evidence",
       "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
-      "elapsed_ms": 3334.43,
+      "elapsed_ms": 6030.36,
       "details": {
         "query_count": 12,
         "result_count": 24,
@@ -285,11 +380,11 @@
           "clause-188173fa6d60",
           "clause-b48c2d36fab9",
           "clause-37a00abb9fe2",
-          "clause-e6020a8de5ce",
           "clause-4840074a0643",
           "clause-63f09648d041",
           "clause-d807f54cecb1",
           "clause-6f7d1f2db8c2",
+          "clause-e6020a8de5ce",
           "clause-d0f0ccf0f804",
           "clause-10f4ae6cd4a4",
           "clause-26ce3d65a871",
@@ -300,7 +395,7 @@
     {
       "agent": "Coverage & Exclusion",
       "action": "Assessed eligibility, exceptions and limits",
-      "elapsed_ms": 11746.13,
+      "elapsed_ms": 7146.13,
       "details": {
         "findings": 7,
         "attempt": 1
@@ -309,38 +404,17 @@
     {
       "agent": "Validation",
       "action": "Checked citation identity, amounts and semantic support",
-      "elapsed_ms": 10950.35,
-      "details": {
-        "status": "FAIL",
-        "checked_statements": 11,
-        "defects": [
-          "The policy does not state a 30-day waiting period for all claims; it specifies that the waiting period applies unless certain conditions are met, such as continuous coverage. The statement incorrectly asserts a universal 30-day requirement."
-        ]
-      }
-    },
-    {
-      "agent": "Coverage & Exclusion",
-      "action": "Assessed eligibility, exceptions and limits",
-      "elapsed_ms": 14640.24,
-      "details": {
-        "findings": 6,
-        "attempt": 2
-      }
-    },
-    {
-      "agent": "Validation",
-      "action": "Checked citation identity, amounts and semantic support",
-      "elapsed_ms": 11313.35,
+      "elapsed_ms": 11957.06,
       "details": {
         "status": "PASS",
-        "checked_statements": 8,
+        "checked_statements": 11,
         "defects": []
       }
     },
     {
       "agent": "Decision",
       "action": "Applied validation gate and emitted structured result",
-      "elapsed_ms": 1.33,
+      "elapsed_ms": 0.44,
       "details": {
         "decision": "NEEDS_REVIEW",
         "reason_code": "INSUFFICIENT_EVIDENCE"
@@ -502,78 +576,78 @@
         ]
       },
       {
-        "query": "USGIC-CSC-2017-2018 inpatient admission minimum duration requirement",
+        "query": "USGIC-CSC-2017-2018 coverage for cancer treatment",
         "top_k": 4,
         "results": [
           {
-            "chunk_id": "clause-2a8cae278105",
+            "chunk_id": "clause-188173fa6d60",
             "rank": 1,
-            "dense_score": 0.6607308387756348,
-            "bm25_score": 13.431251992948132,
-            "rrf_score": 0.03252247488101534,
-            "rerank_score": 0.09211864322423935
+            "dense_score": 0.6319156885147095,
+            "bm25_score": 2.7295770583034313,
+            "rrf_score": 0.031024531024531024,
+            "rerank_score": 0.0007924099918454885
           },
           {
-            "chunk_id": "clause-e6020a8de5ce",
+            "chunk_id": "clause-4840074a0643",
             "rank": 2,
-            "dense_score": 0.6360839605331421,
-            "bm25_score": 3.6589991918891576,
-            "rrf_score": 0.030776515151515152,
-            "rerank_score": 0.0029141753911972046
+            "dense_score": 0.6549042463302612,
+            "bm25_score": 2.940252356527039,
+            "rrf_score": 0.03177805800756621,
+            "rerank_score": 0.0006097275763750076
           },
           {
-            "chunk_id": "clause-2cad9df5f127",
+            "chunk_id": "clause-63f09648d041",
             "rank": 3,
-            "dense_score": 0.6915931701660156,
-            "bm25_score": 7.550724162387386,
-            "rrf_score": 0.03252247488101534,
-            "rerank_score": 0.0019526324467733502
+            "dense_score": 0.6428827047348022,
+            "bm25_score": 1.718710419938223,
+            "rrf_score": 0.030017921146953404,
+            "rerank_score": 0.00015033831004984677
           },
           {
-            "chunk_id": "clause-5264357920b8",
+            "chunk_id": "clause-b48c2d36fab9",
             "rank": 4,
-            "dense_score": 0.6420639157295227,
-            "bm25_score": 2.25929108989577,
-            "rrf_score": 0.030158730158730156,
-            "rerank_score": 0.0004506402474362403
+            "dense_score": 0.6233080625534058,
+            "bm25_score": 4.064889921231776,
+            "rrf_score": 0.031024531024531024,
+            "rerank_score": 9.932183456839994e-05
           }
         ]
       },
       {
-        "query": "USGIC-CSC-2017-2018 waiting period for acute appendicitis",
+        "query": "USGIC-CSC-2017-2018 waiting period for cancer",
         "top_k": 4,
         "results": [
           {
             "chunk_id": "clause-5264357920b8",
             "rank": 1,
-            "dense_score": 0.652441680431366,
+            "dense_score": 0.6571756601333618,
             "bm25_score": 6.673624899806365,
-            "rrf_score": 0.03278688524590164,
-            "rerank_score": 0.00551363080739975
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.0036652525886893272
           },
           {
             "chunk_id": "clause-188173fa6d60",
             "rank": 2,
-            "dense_score": 0.6453649997711182,
+            "dense_score": 0.6454253792762756,
             "bm25_score": 5.749308383921813,
-            "rrf_score": 0.03149801587301587,
-            "rerank_score": 0.0008027671719901264
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.0003786456654779613
           },
           {
             "chunk_id": "clause-4840074a0643",
             "rank": 3,
-            "dense_score": 0.6290451884269714,
+            "dense_score": 0.6445028781890869,
             "bm25_score": 4.608793549077593,
-            "rrf_score": 0.030776515151515152,
-            "rerank_score": 0.0005791939329355955
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.0001421976339770481
           },
           {
-            "chunk_id": "clause-63f09648d041",
+            "chunk_id": "clause-b48c2d36fab9",
             "rank": 4,
-            "dense_score": 0.6186214685440063,
-            "bm25_score": 0.37215891675712165,
-            "rrf_score": 0.015151515151515152,
-            "rerank_score": 0.00031783769372850657
+            "dense_score": 0.6251848936080933,
+            "bm25_score": 5.06920904965083,
+            "rrf_score": 0.030776515151515152,
+            "rerank_score": 0.00013165752170607448
           }
         ]
       },
@@ -616,116 +690,116 @@
         ]
       },
       {
-        "query": "USGIC-CSC-2017-2018 pre-hospitalization coverage duration and limits",
+        "query": "USGIC-CSC-2017-2018 doctor fee reimbursement limits",
         "top_k": 4,
         "results": [
           {
-            "chunk_id": "clause-e6020a8de5ce",
+            "chunk_id": "clause-3371f7e3f0bd",
             "rank": 1,
-            "dense_score": 0.7427457571029663,
-            "bm25_score": 8.758703383294781,
-            "rrf_score": 0.03252247488101534,
-            "rerank_score": 0.17193570733070374
+            "dense_score": 0.7365763187408447,
+            "bm25_score": 0.0,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.006536263972520828
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 2,
+            "dense_score": 0.6106597185134888,
+            "bm25_score": 2.9942850980081377,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.0011598897399380803
+          },
+          {
+            "chunk_id": "clause-e6020a8de5ce",
+            "rank": 3,
+            "dense_score": 0.6312909126281738,
+            "bm25_score": 0.0,
+            "rrf_score": 0.014925373134328358,
+            "rerank_score": 0.0009222285007126629
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 4,
+            "dense_score": 0.6441019177436829,
+            "bm25_score": 2.2410272962797553,
+            "rrf_score": 0.03076923076923077,
+            "rerank_score": 0.0003391192585695535
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 medicine and diagnostic expense limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.6272075176239014,
+            "bm25_score": 5.40259738423156,
+            "rrf_score": 0.014492753623188406,
+            "rerank_score": 0.0063654761761426926
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6790810823440552,
+            "bm25_score": 6.504443579122799,
+            "rrf_score": 0.031746031746031744,
+            "rerank_score": 0.005762944929301739
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 3,
+            "dense_score": 0.6613547801971436,
+            "bm25_score": 10.711603444817099,
+            "rrf_score": 0.031544957774465976,
+            "rerank_score": 0.005125036928802729
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 4,
+            "dense_score": 0.6922026872634888,
+            "bm25_score": 1.7153126980008149,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.003094395622611046
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 pre and post-hospitalization coverage period",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 1,
+            "dense_score": 0.7092444896697998,
+            "bm25_score": 7.754058536818503,
+            "rrf_score": 0.030776515151515152,
+            "rerank_score": 0.04613382741808891
           },
           {
             "chunk_id": "clause-b48c2d36fab9",
             "rank": 2,
-            "dense_score": 0.7294476628303528,
-            "bm25_score": 8.484175131397054,
+            "dense_score": 0.7093112468719482,
+            "bm25_score": 10.183204985355005,
             "rrf_score": 0.03200204813108039,
-            "rerank_score": 0.04171766713261604
+            "rerank_score": 0.040255069732666016
           },
-          {
-            "chunk_id": "clause-d0f0ccf0f804",
-            "rank": 3,
-            "dense_score": 0.6344693303108215,
-            "bm25_score": 5.864136221069449,
-            "rrf_score": 0.014925373134328358,
-            "rerank_score": 0.009527293965220451
-          },
-          {
-            "chunk_id": "clause-4840074a0643",
-            "rank": 4,
-            "dense_score": 0.6790285706520081,
-            "bm25_score": 5.687988811826742,
-            "rrf_score": 0.028991596638655463,
-            "rerank_score": 0.005104688461869955
-          }
-        ]
-      },
-      {
-        "query": "USGIC-CSC-2017-2018 post-hospitalization coverage duration and limits",
-        "top_k": 4,
-        "results": [
           {
             "chunk_id": "clause-e6020a8de5ce",
-            "rank": 1,
-            "dense_score": 0.7439463138580322,
-            "bm25_score": 9.349099103988545,
-            "rrf_score": 0.03252247488101534,
-            "rerank_score": 0.13636626303195953
-          },
-          {
-            "chunk_id": "clause-d0f0ccf0f804",
-            "rank": 2,
-            "dense_score": 0.6471011638641357,
-            "bm25_score": 5.864136221069449,
-            "rrf_score": 0.015151515151515152,
-            "rerank_score": 0.010360073298215866
-          },
-          {
-            "chunk_id": "clause-4840074a0643",
             "rank": 3,
-            "dense_score": 0.6642679572105408,
-            "bm25_score": 5.687988811826742,
-            "rrf_score": 0.014925373134328358,
-            "rerank_score": 0.005308837629854679
+            "dense_score": 0.7321968078613281,
+            "bm25_score": 9.344908023101409,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.03366126865148544
           },
           {
-            "chunk_id": "clause-63f09648d041",
+            "chunk_id": "clause-2a8cae278105",
             "rank": 4,
-            "dense_score": 0.7005658745765686,
-            "bm25_score": 4.546049968376929,
-            "rrf_score": 0.015384615384615385,
-            "rerank_score": 0.002663083840161562
-          }
-        ]
-      },
-      {
-        "query": "USGIC-CSC-2017-2018 ambulance service coverage criteria",
-        "top_k": 4,
-        "results": [
-          {
-            "chunk_id": "clause-4840074a0643",
-            "rank": 1,
-            "dense_score": 0.6394205093383789,
-            "bm25_score": 2.2410272962797553,
-            "rrf_score": 0.03021353930031804,
-            "rerank_score": 0.0004397936281748116
-          },
-          {
-            "chunk_id": "clause-d0f0ccf0f804",
-            "rank": 2,
-            "dense_score": 0.6403621435165405,
-            "bm25_score": 3.9694782875192374,
-            "rrf_score": 0.03177805800756621,
-            "rerank_score": 6.88914442434907e-05
-          },
-          {
-            "chunk_id": "clause-10f4ae6cd4a4",
-            "rank": 3,
-            "dense_score": 0.6283985376358032,
-            "bm25_score": 3.629929704243428,
-            "rrf_score": 0.031024531024531024,
-            "rerank_score": 5.258433520793915e-05
-          },
-          {
-            "chunk_id": "clause-188173fa6d60",
-            "rank": 4,
-            "dense_score": 0.597770094871521,
-            "bm25_score": 1.5527591776508967,
-            "rrf_score": 0.02797339593114241,
-            "rerank_score": 5.226731445873156e-05
+            "dense_score": 0.6540386080741882,
+            "bm25_score": 6.571431371993301,
+            "rrf_score": 0.014492753623188406,
+            "rerank_score": 0.009337108582258224
           }
         ]
       },
@@ -812,5 +886,5 @@
   },
   "model": "gemini-3.1-flash-lite",
   "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
-  "elapsed_ms": 55115.22
+  "elapsed_ms": 36717.32
 }

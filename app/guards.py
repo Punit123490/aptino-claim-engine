@@ -72,6 +72,22 @@ def apply_evidence_gates(assessment: Assessment, evidence: list[dict], case: Cla
         assessment.recommended_decision = Decision.NEEDS_REVIEW
         for limit in assessment.limits:
             limit.conditional = True
+    # A zero allowance for one or more claimed components is a partial denial,
+    # while a positive allowance reduced by a cap remains admissible with limits.
+    denied_components = [
+        limit for limit in assessment.limits
+        if limit.category != 'claim_total'
+        and limit.claimed_inr > 0
+        and limit.allowed_inr == 0
+        and not limit.conditional
+    ]
+    remaining_claimed = sum(
+        amount for category, amount in case.expenses_inr.items()
+        if amount > 0 and category not in {limit.category for limit in denied_components}
+    )
+    if (assessment.recommended_decision == Decision.ADMISSIBLE_WITH_LIMITS
+            and denied_components and remaining_claimed > 0):
+        assessment.recommended_decision = Decision.PARTIALLY_ADMISSIBLE
     # Do not turn ambiguous normal-room wording into a confident duration calculation.
     room_clause = next((e for e in evidence if 'Normal Room expenses: 1.0%' in e['text']), None)
     if room_clause and case.expenses_inr.get('room', 0):

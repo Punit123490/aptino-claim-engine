@@ -1,0 +1,655 @@
+{
+  "case_id": "CAND-009",
+  "decision": "ADMISSIBLE",
+  "reason_code": null,
+  "confidence": 0.85,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [
+    {
+      "dimension": "Day care procedure eligibility",
+      "statement": "Cataract surgery is a recognized day care procedure that qualifies for coverage despite a stay of less than 24 hours due to technological advancement.",
+      "effect": "supports",
+      "evidence_ids": [
+        "clause-2cad9df5f127",
+        "clause-61dc71efc005"
+      ],
+      "fact_paths": [
+        "treatment.procedure",
+        "treatment.admission_hours",
+        "treatment.shortened_by_technological_advancement"
+      ]
+    },
+    {
+      "dimension": "Waiting period for specific diseases",
+      "statement": "The 1-year waiting period for cataract surgery is waived because the insured has completed 1 year of continuous coverage under a prior Indian insurer, and the claim history has been received.",
+      "effect": "supports",
+      "evidence_ids": [
+        "clause-188173fa6d60"
+      ],
+      "fact_paths": [
+        "prior_policy.continuous_years",
+        "prior_policy.database_and_claim_history_received"
+      ]
+    },
+    {
+      "dimension": "Sum insured and expense limits",
+      "statement": "Claimed expenses for doctor fees (20,000 INR) and medicines/diagnostics (40,000 INR) are within the policy sub-limits of 25% (125,000 INR) and 40% (200,000 INR) of the 500,000 INR sum insured respectively.",
+      "effect": "limits",
+      "evidence_ids": [
+        "clause-3371f7e3f0bd",
+        "clause-ea9845a19c83"
+      ],
+      "fact_paths": [
+        "expenses_inr.doctor_fees",
+        "expenses_inr.medicines_diagnostics"
+      ]
+    }
+  ],
+  "applicable_limits": [
+    {
+      "category": "doctor_fees",
+      "description": "Sub-limit of 25% of Sum Insured",
+      "claimed_inr": 20000.0,
+      "cap_inr": 125000.0,
+      "allowed_inr": 20000.0,
+      "evidence_ids": [
+        "clause-3371f7e3f0bd"
+      ],
+      "conditional": false
+    },
+    {
+      "category": "medicines_diagnostics",
+      "description": "Sub-limit of 40% of Sum Insured",
+      "claimed_inr": 40000.0,
+      "cap_inr": 200000.0,
+      "allowed_inr": 40000.0,
+      "evidence_ids": [
+        "clause-ea9845a19c83"
+      ],
+      "conditional": false
+    }
+  ],
+  "missing_evidence": [],
+  "next_action": "Proceed with claim settlement for the total amount of 60,000 INR.",
+  "citations": [
+    {
+      "claim": "Cataract surgery is a recognized day care procedure that qualifies for coverage despite a stay of less than 24 hours due to technological advancement.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7,
+        8
+      ],
+      "section": "WHAT WE COVER / NB4: The hospitalisation treatment of Insured Person as inpatient in the Hospital/Nursing Home for a",
+      "chunk_id": "clause-2cad9df5f127",
+      "quote": "NB4: The hospitalisation treatment of Insured Person as inpatient in the Hospital/Nursing Home for a\nminimum period of 24 hours for specific treatment like Dialysis, Chemotherapy, Radiotherapy, Eye\nSurgery, Lithotripsy, Tonsillectomy or D&C(medical expenses for 140 Day Care Procedures enlisted\nin the Annexure to this Policy Wordings) shall also be covered under the Policy.\nThe minimum stay of 24 hours can be waived in other cases also provided that the following\nconditions are fulfilled:\na) The treatment is such that it necessitates Hospitalisation and procedure involved requires\nspecialised infrastructure facilities available in the Hospital.\nOr\nb) Due to technological advances, the period of Hospitalisation for the treatment has been reduced to\nless than 24 hours."
+    },
+    {
+      "claim": "Cataract surgery is a recognized day care procedure that qualifies for coverage despite a stay of less than 24 hours due to technological advancement.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 2,
+      "pages": [
+        2
+      ],
+      "section": "DEFINITIONS / Day Care Treatment",
+      "chunk_id": "clause-61dc71efc005",
+      "quote": "Day Care Treatment\nDay care treatment refers to medical treatment, and/or surgical procedure which is:\ni. undertaken under General or Local Anesthesia in a hospital/day care centre in less than 24 hrs\nbecause of technological advancement, and\nii. which would have otherwise required a hospitalization of more than 24 hours.\nTreatment normally taken on an out-patient basis is not included in the scope of this definition."
+    },
+    {
+      "claim": "The 1-year waiting period for cataract surgery is waived because the insured has completed 1 year of continuous coverage under a prior Indian insurer, and the claim history has been received.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 9,
+      "pages": [
+        9
+      ],
+      "section": "WHAT WE EXCLUDE / 3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the",
+      "chunk_id": "clause-188173fa6d60",
+      "quote": "3. Hospitalization expense incurred in the first year of operation of the insurance cover on treatment of the\nfollowing Diseases:\ni) Cataract\nii) Benign Prostatic Hypertrophy\niii) Myomectomy, Hysterectomy\niv) Hernia, Hydrocele\nv) Fistula in anus, Piles\nvi) Arthritis, Gout, Rheumatism\nvii) Joint replacement unless due to accident\nviii) Sinusitis and related disorders\nix) Stone in the urinary and biliary systems\nx) Dilatation and Curettage\nxi) Skin and all internal tumors/ cysts/ nodules/ polyps of any kind, including breast lumps unless\nmalignant, adenoids and hemorrhoids\nxii) Dialysis required for rental failure\nxiii) Surgery on tonsils and sinuses\nxiv) Gastric and duodenal ulcers\nHowever, a waiting period of 1 year will not apply if You were insured continuously and without interruption\nfor at least 1 year under Our or any other Indian insurer's individual health insurance Policy for the\nreimbursement of medical costs for inpatient treatment in a Hospital.\nNB: The reduction in the waiting period specified above shall be applied subject to the following:\n We will only apply the reduction of the waiting period if We have received the database and claim\nhistory from the previous Indian insurance Company (if applicable);\n We are under no obligation to insure all Insured Persons or to insure all Insured Persons on the\nproposed terms, or on the same terms as the previous health insurance Policy even if You have\nsubmitted to Us all documentation\n We shall consider only completed years of coverage for waiver of waiting periods."
+    },
+    {
+      "claim": "Claimed expenses for doctor fees (20,000 INR) and medicines/diagnostics (40,000 INR) are within the policy sub-limits of 25% (125,000 INR) and 40% (200,000 INR) of the 500,000 INR sum insured respectively.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit",
+      "chunk_id": "clause-3371f7e3f0bd",
+      "quote": "2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit\nof 25% of Sum Assured."
+    },
+    {
+      "claim": "Claimed expenses for doctor fees (20,000 INR) and medicines/diagnostics (40,000 INR) are within the policy sub-limits of 25% (125,000 INR) and 40% (200,000 INR) of the 500,000 INR sum insured respectively.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,",
+      "chunk_id": "clause-ea9845a19c83",
+      "quote": "3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,\nDiagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial\nLimbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured ."
+    },
+    {
+      "claim": "{\"category\":\"doctor_fees\",\"description\":\"Sub-limit of 25% of Sum Insured\",\"claimed_inr\":20000.0,\"cap_inr\":125000.0,\"allowed_inr\":20000.0,\"evidence_ids\":[\"clause-3371f7e3f0bd\"],\"conditional\":false}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit",
+      "chunk_id": "clause-3371f7e3f0bd",
+      "quote": "2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit\nof 25% of Sum Assured."
+    },
+    {
+      "claim": "{\"category\":\"medicines_diagnostics\",\"description\":\"Sub-limit of 40% of Sum Insured\",\"claimed_inr\":40000.0,\"cap_inr\":200000.0,\"allowed_inr\":40000.0,\"evidence_ids\":[\"clause-ea9845a19c83\"],\"conditional\":false}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,",
+      "chunk_id": "clause-ea9845a19c83",
+      "quote": "3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,\nDiagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial\nLimbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured ."
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unsupported_claims": [],
+    "structural_checks_passed": true,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The policy covers day care procedures for eye surgery when performed in less than 24 hours due to technological advancement, meeting the definition of Day Care Treatment."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The 1-year waiting period for cataract surgery is waived as the insured has 1 year of continuous prior coverage and the insurer has received the required claim history."
+      },
+      {
+        "statement_index": 2,
+        "supported": true,
+        "explanation": "The claimed expenses of 20,000 INR and 40,000 INR are within the calculated sub-limits of 125,000 INR (25% of 500,000) and 200,000 INR (40% of 500,000) respectively."
+      },
+      {
+        "statement_index": 3,
+        "supported": true,
+        "explanation": "The doctor fees are correctly identified as within the 25% sub-limit of the sum insured."
+      },
+      {
+        "statement_index": 4,
+        "supported": true,
+        "explanation": "The medicines and diagnostics expenses are correctly identified as within the 40% sub-limit of the sum insured."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 12349.11,
+      "details": {
+        "dimensions": [
+          "Day care procedure eligibility",
+          "Waiting period for specific diseases",
+          "Portability credit for waiting periods",
+          "Sum insured and expense limits"
+        ],
+        "queries": [
+          "Does the policy cover day care procedures for cataract surgery?",
+          "Is there a specific waiting period for cataract treatment in the policy?",
+          "Does the 1-year prior continuous coverage satisfy the waiting period for cataract surgery?",
+          "Are there sub-limits for doctor fees or medicines/diagnostics for day care procedures?",
+          "Does the policy require a minimum 24-hour hospitalization for cataract surgery despite technological advancements?"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 4254.01,
+      "details": {
+        "query_count": 10,
+        "result_count": 17,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-2a8cae278105",
+          "clause-2c32d4e488c3",
+          "clause-e9109c4719df",
+          "clause-61dc71efc005",
+          "clause-05f60ef6948e",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-bfc74c4949fb",
+          "clause-6fdf886a8887"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 10530.5,
+      "details": {
+        "findings": 3,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 9961.55,
+      "details": {
+        "status": "PASS",
+        "checked_statements": 5,
+        "defects": []
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.34,
+      "details": {
+        "decision": "ADMISSIBLE",
+        "reason_code": null
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital means institution registered OR all minimum criteria nursing staff beds",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.8339692950248718,
+            "bm25_score": 25.887570346997858,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995187520980835
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 2,
+            "dense_score": 0.6831597089767456,
+            "bm25_score": 24.450688120527523,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.9969294667243958
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6889106035232544,
+            "bm25_score": 10.021454894014322,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.7601166367530823
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.7258965969085693,
+            "bm25_score": 8.204639545348508,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.19630639255046844
+          }
+        ]
+      },
+      {
+        "query": "Medically Necessary treatment prescribed Medical Practitioner",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.7772445678710938,
+            "bm25_score": 18.910936195702106,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995817542076111
+          },
+          {
+            "chunk_id": "clause-e9109c4719df",
+            "rank": 2,
+            "dense_score": 0.703262984752655,
+            "bm25_score": 3.9730248819671914,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.48138707876205444
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.6190924644470215,
+            "bm25_score": 2.3311874460666626,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.34145864844322205
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.6318925619125366,
+            "bm25_score": 2.589114120706908,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.23629386723041534
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "Does the policy cover day care procedures for cataract surgery?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.6701372265815735,
+            "bm25_score": 12.134097959464743,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.7303653359413147
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.6804869174957275,
+            "bm25_score": 7.449730963889174,
+            "rrf_score": 0.03036576949620428,
+            "rerank_score": 0.5579864978790283
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.7272118330001831,
+            "bm25_score": 9.38753559376366,
+            "rrf_score": 0.031544957774465976,
+            "rerank_score": 0.06286107003688812
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.6079615354537964,
+            "bm25_score": 2.352107736864841,
+            "rrf_score": 0.014084507042253521,
+            "rerank_score": 0.00812140479683876
+          }
+        ]
+      },
+      {
+        "query": "Is there a specific waiting period for cataract treatment in the policy?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 1,
+            "dense_score": 0.7338937520980835,
+            "bm25_score": 13.475315842373938,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.8636960387229919
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 2,
+            "dense_score": 0.7351904511451721,
+            "bm25_score": 12.583383731812999,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.8401802182197571
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6952881813049316,
+            "bm25_score": 12.593857754302222,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.04092489182949066
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 4,
+            "dense_score": 0.6641334295272827,
+            "bm25_score": 10.329247279094856,
+            "rrf_score": 0.029857397504456328,
+            "rerank_score": 0.0027434288058429956
+          }
+        ]
+      },
+      {
+        "query": "Does the 1-year prior continuous coverage satisfy the waiting period for cataract surgery?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 1,
+            "dense_score": 0.7894049882888794,
+            "bm25_score": 20.568765539244243,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.7357238531112671
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 2,
+            "dense_score": 0.7449193000793457,
+            "bm25_score": 15.273397104155734,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.2528075575828552
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7262374758720398,
+            "bm25_score": 17.352656421782573,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.04098763316869736
+          },
+          {
+            "chunk_id": "clause-bfc74c4949fb",
+            "rank": 4,
+            "dense_score": 0.6229598522186279,
+            "bm25_score": 15.0903405050175,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.0015510899247601628
+          }
+        ]
+      },
+      {
+        "query": "Are there sub-limits for doctor fees or medicines/diagnostics for day care procedures?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.6540133357048035,
+            "bm25_score": 15.888460211825333,
+            "rrf_score": 0.03028233151183971,
+            "rerank_score": 0.616018533706665
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 2,
+            "dense_score": 0.669633150100708,
+            "bm25_score": 9.812442884241797,
+            "rrf_score": 0.030776515151515152,
+            "rerank_score": 0.26192376017570496
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7233867645263672,
+            "bm25_score": 9.039117581691682,
+            "rrf_score": 0.031544957774465976,
+            "rerank_score": 0.10884959250688553
+          },
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 4,
+            "dense_score": 0.5532832145690918,
+            "bm25_score": 10.802915083935057,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.08667807281017303
+          }
+        ]
+      },
+      {
+        "query": "Does the policy require a minimum 24-hour hospitalization for cataract surgery despite technological advancements?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.7266010046005249,
+            "bm25_score": 17.495851150485542,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.7407012581825256
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 2,
+            "dense_score": 0.6354806423187256,
+            "bm25_score": 13.317368336155347,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.6915907263755798
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 3,
+            "dense_score": 0.6701143980026245,
+            "bm25_score": 16.739719812421832,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.10317183285951614
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.7159072160720825,
+            "bm25_score": 8.89375619636106,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.013421736657619476
+          }
+        ]
+      },
+      {
+        "query": "NB4 Eye Surgery 24 hours waived specialised infrastructure technological advances",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.7037104964256287,
+            "bm25_score": 35.35693544479064,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9987353682518005
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 2,
+            "dense_score": 0.5434173345565796,
+            "bm25_score": 11.54117252556117,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.00019990383589174598
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 3,
+            "dense_score": 0.5077739953994751,
+            "bm25_score": 10.046466428104429,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 6.653068703599274e-05
+          },
+          {
+            "chunk_id": "clause-6fdf886a8887",
+            "rank": 4,
+            "dense_score": 0.6064133644104004,
+            "bm25_score": 4.092369478798285,
+            "rrf_score": 0.03036576949620428,
+            "rerank_score": 5.491487172548659e-05
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 17,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 37135.2
+}

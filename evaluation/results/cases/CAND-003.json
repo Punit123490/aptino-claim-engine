@@ -1,0 +1,527 @@
+{
+  "case_id": "CAND-003",
+  "decision": "NOT_ADMISSIBLE",
+  "reason_code": null,
+  "confidence": 0.85,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [
+    {
+      "dimension": "pre_existing_waiting_period",
+      "statement": "The retrieved policy excludes pre-existing disease until 48 months of continuous coverage. The case confirms a pre-existing condition, 12 months of coverage, and no prior-insurer continuity credit.",
+      "effect": "excludes",
+      "evidence_ids": [
+        "clause-b48c2d36fab9"
+      ],
+      "fact_paths": [
+        "treatment.pre_existing",
+        "continuous_coverage_months",
+        "prior_insurer_continuous_years"
+      ]
+    }
+  ],
+  "applicable_limits": [],
+  "missing_evidence": [],
+  "next_action": "Review the cited pre-existing-disease waiting-period exclusion with the supplied continuity facts.",
+  "citations": [
+    {
+      "claim": "The retrieved policy excludes pre-existing disease until 48 months of continuous coverage. The case confirms a pre-existing condition, 12 months of coverage, and no prior-insurer continuity credit.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 8,
+      "pages": [
+        8
+      ],
+      "section": "WHAT WE EXCLUDE / 1. Pre-existing diseases",
+      "chunk_id": "clause-b48c2d36fab9",
+      "quote": "1. Pre-existing diseases\nPre-existing diseases will not be covered until 48 months of continuous coverage have elapsed, since\ninception of the first Policy with Us; but:\nIf You are presently covered and have been continuously covered without any break under:\ni. An individual health insurance plan with an Indian insurer for the reimbursement of medical costs for\ninpatient treatment in a Hospital,\nOR\nii. Any other similar health insurance plan from Us, then, Pre-existing diseases exclusion of the Policy\nstands deleted and shall be replaced entirely with the following:\ni. The waiting period for all Pre-existing diseases shall be reduced by the number of Your continuous\npreceding years of coverage under the previous health insurance Policy;\nAND\nii. If the proposed Sum Insured for You is more than the Sum Insured applicable under the previous\nhealth insurance Policy (other than as a result of the application of Cumulative Bonus), then the\nreduced waiting period shall only apply to the extent of the Sum Insured under the previous health\ninsurance Policy."
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unsupported_claims": [],
+    "structural_checks_passed": true,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The policy clause requires 48 months of continuous coverage for pre-existing diseases. The case facts confirm the condition is pre-existing, the policyholder has only 12 months of coverage, and there are zero prior-insurer years to reduce the waiting period."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 2519.05,
+      "details": {
+        "dimensions": [
+          "Pre-existing disease waiting period",
+          "Coverage for complications arising from pre-existing conditions",
+          "Inpatient hospitalization eligibility",
+          "Sum insured utilization",
+          "Network provider status"
+        ],
+        "queries": [
+          "USGIC-CSC-2017-2018 pre-existing disease waiting period duration",
+          "USGIC-CSC-2017-2018 coverage for complications of pre-existing conditions",
+          "USGIC-CSC-2017-2018 inpatient hospitalization minimum stay requirements",
+          "USGIC-CSC-2017-2018 exclusions for thyroid disorders",
+          "USGIC-CSC-2017-2018 coverage limits for appendectomy"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 1903.35,
+      "details": {
+        "query_count": 10,
+        "result_count": 24,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-2a8cae278105",
+          "clause-2c32d4e488c3",
+          "clause-e9109c4719df",
+          "clause-61dc71efc005",
+          "clause-05f60ef6948e",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-bfc74c4949fb",
+          "clause-972201c476f0",
+          "clause-4840074a0643",
+          "clause-961c85a7251c",
+          "clause-e6020a8de5ce",
+          "clause-a1d55a865dba",
+          "clause-7baacc065aee",
+          "clause-63f09648d041",
+          "clause-10f4ae6cd4a4"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 13180.6,
+      "details": {
+        "findings": 1,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 10454.03,
+      "details": {
+        "status": "PASS",
+        "checked_statements": 1,
+        "defects": []
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.2,
+      "details": {
+        "decision": "NOT_ADMISSIBLE",
+        "reason_code": null
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital means institution registered OR all minimum criteria nursing staff beds",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.8339692950248718,
+            "bm25_score": 25.887570346997858,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995187520980835
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 2,
+            "dense_score": 0.6831597089767456,
+            "bm25_score": 24.450688120527523,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.9969294667243958
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6889106035232544,
+            "bm25_score": 10.021454894014322,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.7601166367530823
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.7258965969085693,
+            "bm25_score": 8.204639545348508,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.19630639255046844
+          }
+        ]
+      },
+      {
+        "query": "Medically Necessary treatment prescribed Medical Practitioner",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.7772445678710938,
+            "bm25_score": 18.910936195702106,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995817542076111
+          },
+          {
+            "chunk_id": "clause-e9109c4719df",
+            "rank": 2,
+            "dense_score": 0.703262984752655,
+            "bm25_score": 3.9730248819671914,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.48138707876205444
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.6190924644470215,
+            "bm25_score": 2.3311874460666626,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.34145864844322205
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.6318925619125366,
+            "bm25_score": 2.589114120706908,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.23629386723041534
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 pre-existing disease waiting period duration",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 1,
+            "dense_score": 0.7395411729812622,
+            "bm25_score": 13.135654981525391,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.8964757919311523
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 2,
+            "dense_score": 0.6806495189666748,
+            "bm25_score": 6.30074821564121,
+            "rrf_score": 0.031024531024531024,
+            "rerank_score": 0.3211168348789215
+          },
+          {
+            "chunk_id": "clause-bfc74c4949fb",
+            "rank": 3,
+            "dense_score": 0.6068193316459656,
+            "bm25_score": 11.820380830372807,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.01231667585670948
+          },
+          {
+            "chunk_id": "clause-972201c476f0",
+            "rank": 4,
+            "dense_score": 0.702595055103302,
+            "bm25_score": 8.265475737803028,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.0018956998828798532
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 coverage for complications of pre-existing conditions",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 1,
+            "dense_score": 0.7145997881889343,
+            "bm25_score": 13.855379507084194,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.405114084482193
+          },
+          {
+            "chunk_id": "clause-972201c476f0",
+            "rank": 2,
+            "dense_score": 0.6917781829833984,
+            "bm25_score": 8.640925488323212,
+            "rrf_score": 0.031754032258064516,
+            "rerank_score": 0.0176787618547678
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 3,
+            "dense_score": 0.6894713640213013,
+            "bm25_score": 4.919703562344753,
+            "rrf_score": 0.029957522915269395,
+            "rerank_score": 0.0031443466432392597
+          },
+          {
+            "chunk_id": "clause-961c85a7251c",
+            "rank": 4,
+            "dense_score": 0.5833762884140015,
+            "bm25_score": 9.060823338903143,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.0006613333825953305
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 inpatient hospitalization minimum stay requirements",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 1,
+            "dense_score": 0.7066331505775452,
+            "bm25_score": 8.899018275286087,
+            "rrf_score": 0.03225806451612903,
+            "rerank_score": 0.27493420243263245
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 2,
+            "dense_score": 0.713272213935852,
+            "bm25_score": 10.305463650048221,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.042004622519016266
+          },
+          {
+            "chunk_id": "clause-e6020a8de5ce",
+            "rank": 3,
+            "dense_score": 0.6490923762321472,
+            "bm25_score": 0.0,
+            "rrf_score": 0.015384615384615385,
+            "rerank_score": 0.001998563762754202
+          },
+          {
+            "chunk_id": "clause-a1d55a865dba",
+            "rank": 4,
+            "dense_score": 0.6608983278274536,
+            "bm25_score": 3.491863617736084,
+            "rrf_score": 0.030158730158730156,
+            "rerank_score": 0.0014505070867016912
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 exclusions for thyroid disorders",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-7baacc065aee",
+            "rank": 1,
+            "dense_score": 0.5735613107681274,
+            "bm25_score": 5.745347304914375,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.0007415404543280602
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 2,
+            "dense_score": 0.6572369337081909,
+            "bm25_score": 0.35071291507291413,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.0001566962746437639
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 3,
+            "dense_score": 0.6069311499595642,
+            "bm25_score": 2.5427238240858316,
+            "rrf_score": 0.015384615384615385,
+            "rerank_score": 0.0001307292841374874
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 4,
+            "dense_score": 0.6646564602851868,
+            "bm25_score": 3.82818959118009,
+            "rrf_score": 0.031754032258064516,
+            "rerank_score": 9.10948365344666e-05
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 coverage limits for appendectomy",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 1,
+            "dense_score": 0.6271472573280334,
+            "bm25_score": 2.5427238240858316,
+            "rrf_score": 0.02900988017658188,
+            "rerank_score": 0.0007053010049276054
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.6719240546226501,
+            "bm25_score": 1.8861329014400134,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.0004004703660029918
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 3,
+            "dense_score": 0.6325333714485168,
+            "bm25_score": 5.564223783344885,
+            "rrf_score": 0.030679156908665108,
+            "rerank_score": 6.619314081035554e-05
+          },
+          {
+            "chunk_id": "clause-10f4ae6cd4a4",
+            "rank": 4,
+            "dense_score": 0.6692143678665161,
+            "bm25_score": 0.4668826624270858,
+            "rrf_score": 0.02976190476190476,
+            "rerank_score": 5.86716050747782e-05
+          }
+        ]
+      },
+      {
+        "query": "Pre-existing diseases 48 months continuous coverage previous sum insured",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 1,
+            "dense_score": 0.8763280510902405,
+            "bm25_score": 30.219867534861685,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9999023675918579
+          },
+          {
+            "chunk_id": "clause-972201c476f0",
+            "rank": 2,
+            "dense_score": 0.7859799265861511,
+            "bm25_score": 19.783415248995937,
+            "rrf_score": 0.03225806451612903,
+            "rerank_score": 0.9780940413475037
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 3,
+            "dense_score": 0.7250697016716003,
+            "bm25_score": 5.255156651882402,
+            "rrf_score": 0.030090497737556562,
+            "rerank_score": 0.4330894351005554
+          },
+          {
+            "chunk_id": "clause-e6020a8de5ce",
+            "rank": 4,
+            "dense_score": 0.7346498370170593,
+            "bm25_score": 5.977069180937676,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.21489202976226807
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 24,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 28083.1
+}

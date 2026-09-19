@@ -101,6 +101,27 @@ def test_registered_hospital_does_not_trigger_missing_evidence_gate(case_data):
     assert result.recommended_decision.value == 'ADMISSIBLE'
 
 
+def test_zero_allowance_for_claimed_component_is_partial(case_data):
+    case = ClaimCase.model_validate(case_data)
+    case.expenses_inr = {'doctor_fees': 60000, 'pre_hospitalization': 5000}
+    draft = assessment(
+        recommended_decision='ADMISSIBLE_WITH_LIMITS',
+        limits=[{
+            'category': 'pre_hospitalization',
+            'description': 'Outside the covered window.',
+            'claimed_inr': 5000,
+            'cap_inr': 0,
+            'allowed_inr': 0,
+            'evidence_ids': ['window-clause'],
+            'conditional': False,
+        }],
+    )
+
+    result = apply_evidence_gates(draft, [], case)
+
+    assert result.recommended_decision.value == 'PARTIALLY_ADMISSIBLE'
+
+
 def test_room_ambiguity_does_not_publish_unproven_daily_amount(case_data):
     draft = assessment(limits=[dict(category='room', description='Per-day cap', claimed_inr=30000,
                                    allowed_inr=20000, cap_inr=20000, evidence_ids=['room'])])

@@ -1,0 +1,565 @@
+{
+  "case_id": "CAND-005",
+  "decision": "NOT_ADMISSIBLE",
+  "reason_code": null,
+  "confidence": 0.85,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [
+    {
+      "dimension": "Outpatient treatment coverage eligibility",
+      "statement": "The policy explicitly excludes any expenses incurred for treatment as an outpatient in a hospital.",
+      "effect": "excludes",
+      "evidence_ids": [
+        "clause-7d398dc0e4d1"
+      ],
+      "fact_paths": [
+        "treatment.type"
+      ]
+    },
+    {
+      "dimension": "Policy definition of hospitalization requirements",
+      "statement": "The claim is for outpatient consultation with zero admission hours, failing the requirement for inpatient admission.",
+      "effect": "supports",
+      "evidence_ids": [
+        "clause-2a8cae278105",
+        "clause-50ae97ec8d57"
+      ],
+      "fact_paths": [
+        "treatment.admission_hours"
+      ]
+    }
+  ],
+  "applicable_limits": [],
+  "missing_evidence": [],
+  "next_action": "The claim is denied as it pertains to outpatient treatment, which is specifically excluded under the policy terms. No further investigation is required.",
+  "citations": [
+    {
+      "claim": "The policy explicitly excludes any expenses incurred for treatment as an outpatient in a hospital.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 10,
+      "pages": [
+        10
+      ],
+      "section": "WHAT WE EXCLUDE / 13. Any expense on Your treatment as an outpatient in a Hospital.",
+      "chunk_id": "clause-7d398dc0e4d1",
+      "quote": "13. Any expense on Your treatment as an outpatient in a Hospital."
+    },
+    {
+      "claim": "The claim is for outpatient consultation with zero admission hours, failing the requirement for inpatient admission.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 3,
+      "pages": [
+        3
+      ],
+      "section": "DEFINITIONS / Hospitalization means admission in a Hospital for a minimum period of 24 In -patient Care",
+      "chunk_id": "clause-2a8cae278105",
+      "quote": "Hospitalization means admission in a Hospital for a minimum period of 24 In -patient Care\nconsecutive hours except for specified procedu res/ treatments, where such admission could be for a\nperiod of less than 24 consecutive hours."
+    },
+    {
+      "claim": "The claim is for outpatient consultation with zero admission hours, failing the requirement for inpatient admission.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 4,
+      "pages": [
+        4
+      ],
+      "section": "DEFINITIONS / Non- Network means any Hospital, day care Centre or other provider that is not part of the network.",
+      "chunk_id": "clause-50ae97ec8d57",
+      "quote": "Non- Network means any Hospital, day care Centre or other provider that is not part of the network.\nNotification of Claim is the process of notifying a claim to the insurer or TPA by specifying the\ntimelines as well as the address / telephone number to which it should be notified.\nOPD Treatment is one in which the Insured visits a clinic / Hospital or associated facility like a\nconsultation room for diagnosis and treatment based on the advice of a Medical Practitioner. The\nInsured is not admitted as a day care or in -patient."
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unsupported_claims": [],
+    "structural_checks_passed": true,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "Clause 13 explicitly lists expenses for treatment as an outpatient in a hospital as an exclusion."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The policy defines hospitalization as requiring a minimum of 24 consecutive hours (with specific exceptions not applicable here) and defines OPD treatment as visits where the insured is not admitted as an inpatient."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 12576.1,
+      "details": {
+        "dimensions": [
+          "Outpatient treatment coverage eligibility",
+          "Policy definition of hospitalization requirements",
+          "Coverage for outpatient consultation and diagnostics",
+          "Sum insured limits for outpatient expenses"
+        ],
+        "queries": [
+          "Does the policy cover outpatient treatment or consultation?",
+          "Is hospitalization of at least 24 hours required for claim eligibility?",
+          "Are outpatient diagnostic and medicine expenses covered under the base policy?",
+          "What are the specific exclusions for non-hospitalized treatments?",
+          "Does the policy define minimum admission duration for valid claims?"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 3218.72,
+      "details": {
+        "query_count": 10,
+        "result_count": 26,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-2a8cae278105",
+          "clause-2c32d4e488c3",
+          "clause-e9109c4719df",
+          "clause-61dc71efc005",
+          "clause-05f60ef6948e",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-d3f50d18b6ed",
+          "clause-a1d55a865dba",
+          "clause-6fdf886a8887",
+          "clause-f29c210437f4",
+          "clause-7d398dc0e4d1",
+          "clause-7baacc065aee",
+          "clause-b30a44559b71",
+          "clause-50ae97ec8d57",
+          "clause-5f330abefb72",
+          "clause-26ce3d65a871",
+          "clause-265ab91a38cc"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 10760.6,
+      "details": {
+        "findings": 2,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 12093.05,
+      "details": {
+        "status": "PASS",
+        "checked_statements": 2,
+        "defects": []
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.25,
+      "details": {
+        "decision": "NOT_ADMISSIBLE",
+        "reason_code": null
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital means institution registered OR all minimum criteria nursing staff beds",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.8339692950248718,
+            "bm25_score": 25.887570346997858,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995187520980835
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 2,
+            "dense_score": 0.6831597089767456,
+            "bm25_score": 24.450688120527523,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.9969294667243958
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6889106035232544,
+            "bm25_score": 10.021454894014322,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.7601166367530823
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.7258965969085693,
+            "bm25_score": 8.204639545348508,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.19630639255046844
+          }
+        ]
+      },
+      {
+        "query": "Medically Necessary treatment prescribed Medical Practitioner",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.7772445678710938,
+            "bm25_score": 18.910936195702106,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995817542076111
+          },
+          {
+            "chunk_id": "clause-e9109c4719df",
+            "rank": 2,
+            "dense_score": 0.703262984752655,
+            "bm25_score": 3.9730248819671914,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.48138707876205444
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.6190924644470215,
+            "bm25_score": 2.3311874460666626,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.34145864844322205
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.6318925619125366,
+            "bm25_score": 2.589114120706908,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.23629386723041534
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "Does the policy cover outpatient treatment or consultation?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.7040257453918457,
+            "bm25_score": 6.195783820761063,
+            "rrf_score": 0.03131881575727918,
+            "rerank_score": 0.9925928711891174
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.6587111949920654,
+            "bm25_score": 5.482261454941282,
+            "rrf_score": 0.028814262023217248,
+            "rerank_score": 0.6986421346664429
+          },
+          {
+            "chunk_id": "clause-d3f50d18b6ed",
+            "rank": 3,
+            "dense_score": 0.6510254144668579,
+            "bm25_score": 7.119884183782738,
+            "rrf_score": 0.02967032967032967,
+            "rerank_score": 0.05654166266322136
+          },
+          {
+            "chunk_id": "clause-a1d55a865dba",
+            "rank": 4,
+            "dense_score": 0.6568950414657593,
+            "bm25_score": 6.014716862863617,
+            "rrf_score": 0.02919863597612958,
+            "rerank_score": 0.02578340657055378
+          }
+        ]
+      },
+      {
+        "query": "Is hospitalization of at least 24 hours required for claim eligibility?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 1,
+            "dense_score": 0.7347263693809509,
+            "bm25_score": 15.90113012892397,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.9942432045936584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 2,
+            "dense_score": 0.7908883690834045,
+            "bm25_score": 9.702920400531486,
+            "rrf_score": 0.031099324975891997,
+            "rerank_score": 0.8465697765350342
+          },
+          {
+            "chunk_id": "clause-6fdf886a8887",
+            "rank": 3,
+            "dense_score": 0.7207251787185669,
+            "bm25_score": 9.952616833663182,
+            "rrf_score": 0.030309988518943745,
+            "rerank_score": 0.7953928112983704
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.751204252243042,
+            "bm25_score": 10.95264459306362,
+            "rrf_score": 0.03200204813108039,
+            "rerank_score": 0.5777269601821899
+          }
+        ]
+      },
+      {
+        "query": "Are outpatient diagnostic and medicine expenses covered under the base policy?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.6747843027114868,
+            "bm25_score": 8.014110501987957,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.7845551371574402
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.7203911542892456,
+            "bm25_score": 9.08449818422354,
+            "rrf_score": 0.03007688828584351,
+            "rerank_score": 0.45746713876724243
+          },
+          {
+            "chunk_id": "clause-f29c210437f4",
+            "rank": 3,
+            "dense_score": 0.7294750213623047,
+            "bm25_score": 9.558492155200163,
+            "rrf_score": 0.031009615384615385,
+            "rerank_score": 0.1933055967092514
+          },
+          {
+            "chunk_id": "clause-7d398dc0e4d1",
+            "rank": 4,
+            "dense_score": 0.7480190992355347,
+            "bm25_score": 8.063846454882027,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.09418756514787674
+          }
+        ]
+      },
+      {
+        "query": "What are the specific exclusions for non-hospitalized treatments?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-7baacc065aee",
+            "rank": 1,
+            "dense_score": 0.5461879372596741,
+            "bm25_score": 7.235334477394481,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.0448579341173172
+          },
+          {
+            "chunk_id": "clause-b30a44559b71",
+            "rank": 2,
+            "dense_score": 0.7403516173362732,
+            "bm25_score": 11.693290081648193,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.007421667221933603
+          },
+          {
+            "chunk_id": "clause-50ae97ec8d57",
+            "rank": 3,
+            "dense_score": 0.6777248978614807,
+            "bm25_score": 5.803487750508731,
+            "rrf_score": 0.014492753623188406,
+            "rerank_score": 0.003515832358971238
+          },
+          {
+            "chunk_id": "clause-5f330abefb72",
+            "rank": 4,
+            "dense_score": 0.7293638586997986,
+            "bm25_score": 3.0334226437306824,
+            "rrf_score": 0.015384615384615385,
+            "rerank_score": 0.00046076931175775826
+          }
+        ]
+      },
+      {
+        "query": "Does the policy define minimum admission duration for valid claims?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 1,
+            "dense_score": 0.6278771162033081,
+            "bm25_score": 13.901131165148229,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.1685013473033905
+          },
+          {
+            "chunk_id": "clause-26ce3d65a871",
+            "rank": 2,
+            "dense_score": 0.7386960983276367,
+            "bm25_score": 5.8601796617689565,
+            "rrf_score": 0.030776515151515152,
+            "rerank_score": 0.14745831489562988
+          },
+          {
+            "chunk_id": "clause-265ab91a38cc",
+            "rank": 3,
+            "dense_score": 0.7637011408805847,
+            "bm25_score": 5.002860059070516,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.06348926573991776
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 4,
+            "dense_score": 0.7416254281997681,
+            "bm25_score": 4.265056451497941,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.05766189843416214
+          }
+        ]
+      },
+      {
+        "query": "NB4 Eye Surgery 24 hours waived specialised infrastructure technological advances",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 1,
+            "dense_score": 0.7037104964256287,
+            "bm25_score": 35.35693544479064,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9987353682518005
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 2,
+            "dense_score": 0.5434173345565796,
+            "bm25_score": 11.54117252556117,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.00019990383589174598
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 3,
+            "dense_score": 0.5077739953994751,
+            "bm25_score": 10.046466428104429,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 6.653068703599274e-05
+          },
+          {
+            "chunk_id": "clause-6fdf886a8887",
+            "rank": 4,
+            "dense_score": 0.6064133644104004,
+            "bm25_score": 4.092369478798285,
+            "rrf_score": 0.03036576949620428,
+            "rerank_score": 5.491487172548659e-05
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 26,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 38688.63
+}

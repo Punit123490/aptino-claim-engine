@@ -1,0 +1,27 @@
+{
+  "generated_at_utc": "2026-09-18T20:33:38.288823+00:00",
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "public_cases_sha256": "e5e286ddfd70bf4bd02ddba5d38afdf7a7fb80198cd9d0d3201c5ffe28266158",
+  "case_count": 21,
+  "public_count": 12,
+  "candidate_count": 9,
+  "accuracy": 0.8095238095238095,
+  "public_accuracy": 0.8333333333333334,
+  "candidate_accuracy": 0.7777777777777778,
+  "service_failures": 0,
+  "validation_pass_rate": 1.0,
+  "mean_pooled_evidence_recall_at_4": 0.9444444444444444,
+  "citation_identity_accuracy": 1.0,
+  "model_validator_support_rate": 1.0,
+  "abstention_recall": 0.9,
+  "abstention_precision": 0.75,
+  "median_latency_seconds": 38.218419999999995,
+  "reused_results": [],
+  "limitations": [
+    "Expected decisions are candidate-authored policy interpretations, not insurer labels.",
+    "Pooled recall counts gold evidence anchors found across all queries, each returning at most four results; it is not single-query recall@4.",
+    "Citation identity checks provenance only. The model validator support rate is not independent human entailment accuracy.",
+    "Development cases and prompts were inspected during implementation; this is not a blind benchmark."
+  ]
+}

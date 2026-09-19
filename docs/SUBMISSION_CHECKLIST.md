@@ -9,6 +9,8 @@ Before sending the submission, record the actual URLs in your email:
 3. Live API documentation at the application's `/docs` URL.
 4. Health endpoint at the application's `/health` URL.
 
+Repository: https://github.com/Punit123490/aptino-claim-engine
+
 Do not send a localhost address or a deployment that is still building.
 
 ## GitHub publication

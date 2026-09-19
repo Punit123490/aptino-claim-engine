@@ -1,0 +1,636 @@
+{
+  "case_id": "CAND-004",
+  "decision": "NEEDS_REVIEW",
+  "reason_code": "INSUFFICIENT_EVIDENCE",
+  "confidence": 0.5,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [
+    {
+      "dimension": "Hospital Eligibility",
+      "statement": "The policy requires that a hospital be registered under the Clinical Establishments Act or meet specific criteria including round-the-clock qualified nursing staff, a minimum bed count, and a fully equipped operation theatre.",
+      "effect": "uncertain",
+      "evidence_ids": [
+        "clause-999f339b3d0c"
+      ],
+      "fact_paths": [
+        "hospital.name"
+      ]
+    },
+    {
+      "dimension": "Inpatient Admission",
+      "statement": "The patient was admitted for 96 hours, which satisfies the minimum 24-hour inpatient care requirement for hospitalization.",
+      "effect": "supports",
+      "evidence_ids": [
+        "clause-2a8cae278105"
+      ],
+      "fact_paths": [
+        "treatment.admission_hours"
+      ]
+    },
+    {
+      "dimension": "Non-Network Provider",
+      "statement": "The policy covers hospitalization in any hospital in India, but the specific reimbursement terms for non-network providers are not explicitly defined in the provided excerpts.",
+      "effect": "uncertain",
+      "evidence_ids": [
+        "clause-4840074a0643",
+        "clause-5e4d5f7ea428"
+      ],
+      "fact_paths": [
+        "hospital.network_provider"
+      ]
+    },
+    {
+      "dimension": "hospital_evidence_gate",
+      "statement": "The policy requires hospital registration or compliance with all minimum criteria; the supplied facts establish neither route.",
+      "effect": "uncertain",
+      "evidence_ids": [
+        "clause-999f339b3d0c"
+      ],
+      "fact_paths": [
+        "hospital",
+        "evidence_context"
+      ]
+    }
+  ],
+  "applicable_limits": [
+    {
+      "category": "Doctor Fees",
+      "description": "Surgeon/Consultant fees subject to a limit of 25% of Sum Insured (125,000 INR).",
+      "claimed_inr": 20000.0,
+      "cap_inr": 125000.0,
+      "allowed_inr": 20000.0,
+      "evidence_ids": [
+        "clause-3371f7e3f0bd"
+      ],
+      "conditional": true
+    },
+    {
+      "category": "Medicines and Diagnostics",
+      "description": "Expenses subject to a limit of 40% of Sum Insured (200,000 INR).",
+      "claimed_inr": 40000.0,
+      "cap_inr": 200000.0,
+      "allowed_inr": 40000.0,
+      "evidence_ids": [
+        "clause-ea9845a19c83"
+      ],
+      "conditional": true
+    }
+  ],
+  "missing_evidence": [
+    "Registration certificate or proof of compliance with minimum criteria for Sunrise Multispeciality hospital",
+    "Evidence that the facility is registered as a hospital or satisfies all alternative minimum criteria."
+  ],
+  "next_action": "Verify the registration status of Sunrise Multispeciality hospital to confirm it meets the policy definition of a Hospital.",
+  "citations": [
+    {
+      "claim": "The policy requires that a hospital be registered under the Clinical Establishments Act or meet specific criteria including round-the-clock qualified nursing staff, a minimum bed count, and a fully equipped operation theatre.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 3,
+      "pages": [
+        3
+      ],
+      "section": "DEFINITIONS / Hospital means any institution established for in -patient care and Day Care Treatment of Illness",
+      "chunk_id": "clause-999f339b3d0c",
+      "quote": "Hospital means any institution established for in -patient care and Day Care Treatment of Illness\nand/or Injuries and which has been registered as a Hospital wit h the local authorities under the\nClinical Establishments (Registration and Regulation) Act, 2010 or under the enactments specified\nunder the Schedule of Section 56(1) of the said Act OR complies with all minimum criteria as under:\n has qualified nursing staff under its employment round the clock;\n has at least 10 in-patient beds in towns having a population of less than 10,00,000 and at least 15\nin-patient beds in all other places;\n has qualified Medical Practitioner(s) in charge round the clock;\n has a fully equipped operation theatre of its own where Surgical Procedures are carried out;\n maintains daily records of patients and makes these accessible to the insurance Company's\nauthorized personnel."
+    },
+    {
+      "claim": "The patient was admitted for 96 hours, which satisfies the minimum 24-hour inpatient care requirement for hospitalization.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 3,
+      "pages": [
+        3
+      ],
+      "section": "DEFINITIONS / Hospitalization means admission in a Hospital for a minimum period of 24 In -patient Care",
+      "chunk_id": "clause-2a8cae278105",
+      "quote": "Hospitalization means admission in a Hospital for a minimum period of 24 In -patient Care\nconsecutive hours except for specified procedu res/ treatments, where such admission could be for a\nperiod of less than 24 consecutive hours."
+    },
+    {
+      "claim": "The policy covers hospitalization in any hospital in India, but the specific reimbursement terms for non-network providers are not explicitly defined in the provided excerpts.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 1,
+      "pages": [
+        1
+      ],
+      "section": "Policy contract",
+      "chunk_id": "clause-4840074a0643",
+      "quote": "CSC – INDIVIDUAL HEALTH INSURANCE\nPROSPECTUS\nThis Policy is an evidence of the contract between You and Universal Sompo General Insurance\nCompany Limited. The information furnished by You/ in the Proposal form and the declaration signed\nby You forms the basis of this contract.\nThe Policy, the Schedule and any Endorsement shall be read together and any word or expression to\nwhich a specific meaning has been attached in any part of this Policy or of Schedule shall bear such\nmeaning whenever it may appear.\nThis Policy witnesses that in consideration of Your having paid the premium for the Policy Period\nstated in the Schedule or further period of insurance for which We may accept the premium for\nrenewal of this Policy, We undertake that if during the period of insurance or during the continuance\nof this Policy by renewal You contact any disease or suffer from any Illness or sustain any Bodily\nInjury through Accident and if such disease or injury shall require, upon the advices of a qualified\nMedical Practitioner, Hospitalization for medical/surgical treatment in any Nursing Home/Hospital in\nIndia, or Domiciliary Hospitalization as defined in the Policy, We will pay to You the amount of\nsuch expenses as may be reasonably and necessarily incurred in respe ct thereof as stated in the\nSchedule but not exceeding the Sum Insured in aggregate in any one period of insurance provided\nthat all the terms, conditions and exceptions of this Policy in so far as they relate to anything to be\ndone or complied with by You have been met."
+    },
+    {
+      "claim": "The policy covers hospitalization in any hospital in India, but the specific reimbursement terms for non-network providers are not explicitly defined in the provided excerpts.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 4,
+      "pages": [
+        4
+      ],
+      "section": "DEFINITIONS / Network Provider means Hospitals or health care providers enlisted by an insurer or by a TPA and",
+      "chunk_id": "clause-5e4d5f7ea428",
+      "quote": "Network Provider means Hospitals or health care providers enlisted by an insurer or by a TPA and\ninsurer together to provide medical services to an insured on payment by a cashless facili ty."
+    },
+    {
+      "claim": "The policy requires hospital registration or compliance with all minimum criteria; the supplied facts establish neither route.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 3,
+      "pages": [
+        3
+      ],
+      "section": "DEFINITIONS / Hospital means any institution established for in -patient care and Day Care Treatment of Illness",
+      "chunk_id": "clause-999f339b3d0c",
+      "quote": "Hospital means any institution established for in -patient care and Day Care Treatment of Illness\nand/or Injuries and which has been registered as a Hospital wit h the local authorities under the\nClinical Establishments (Registration and Regulation) Act, 2010 or under the enactments specified\nunder the Schedule of Section 56(1) of the said Act OR complies with all minimum criteria as under:\n has qualified nursing staff under its employment round the clock;\n has at least 10 in-patient beds in towns having a population of less than 10,00,000 and at least 15\nin-patient beds in all other places;\n has qualified Medical Practitioner(s) in charge round the clock;\n has a fully equipped operation theatre of its own where Surgical Procedures are carried out;\n maintains daily records of patients and makes these accessible to the insurance Company's\nauthorized personnel."
+    },
+    {
+      "claim": "{\"category\":\"Doctor Fees\",\"description\":\"Surgeon/Consultant fees subject to a limit of 25% of Sum Insured (125,000 INR).\",\"claimed_inr\":20000.0,\"cap_inr\":125000.0,\"allowed_inr\":20000.0,\"evidence_ids\":[\"clause-3371f7e3f0bd\"],\"conditional\":true}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit",
+      "chunk_id": "clause-3371f7e3f0bd",
+      "quote": "2. Medical Practitioner/ Anesthetist, Consultant fees, Surgeons fees and similar expenses subject to a limit\nof 25% of Sum Assured."
+    },
+    {
+      "claim": "{\"category\":\"Medicines and Diagnostics\",\"description\":\"Expenses subject to a limit of 40% of Sum Insured (200,000 INR).\",\"claimed_inr\":40000.0,\"cap_inr\":200000.0,\"allowed_inr\":40000.0,\"evidence_ids\":[\"clause-ea9845a19c83\"],\"conditional\":true}",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / 3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,",
+      "chunk_id": "clause-ea9845a19c83",
+      "quote": "3. Expenses on Anesthesia, Blood, Oxygen, Operation Theatre, Surgical Appliances, Medicines and Drugs,\nDiagnostic Materials and X-ray, Dialysis, Chemotherapy, Radiotherapy, Cost of Pacemaker, Artificial\nLimbs, Cost of Organs and similar expenses subject to a limit of 40% Sum Insured ."
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unsupported_claims": [],
+    "structural_checks_passed": true,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The policy definition of a hospital requires registration under the Clinical Establishments Act or compliance with specific minimum criteria including nursing staff, bed count, and operation theatre."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The policy defines hospitalization as admission for a minimum of 24 consecutive hours; the 96-hour admission exceeds this requirement."
+      },
+      {
+        "statement_index": 2,
+        "supported": true,
+        "explanation": "The policy covers hospitalization in any hospital in India, and the provided excerpts do not specify different reimbursement rates for non-network providers."
+      },
+      {
+        "statement_index": 3,
+        "supported": true,
+        "explanation": "The case facts do not provide evidence of the hospital's registration status or its compliance with the minimum criteria defined in the policy."
+      },
+      {
+        "statement_index": 4,
+        "supported": true,
+        "explanation": "The policy limits medical practitioner and surgeon fees to 25% of the sum insured (125,000 INR), and the claim of 20,000 INR is within this limit."
+      },
+      {
+        "statement_index": 5,
+        "supported": true,
+        "explanation": "The policy limits expenses for medicines and diagnostics to 40% of the sum insured (200,000 INR), and the claim of 40,000 INR is within this limit."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 10932.85,
+      "details": {
+        "dimensions": [
+          "Network provider status impact on reimbursement",
+          "Inpatient admission duration requirements",
+          "Coverage for non-network hospital expenses",
+          "Policy limits for surgical procedures",
+          "Eligibility of medical expenses in non-network facilities"
+        ],
+        "queries": [
+          "USGIC-CSC-2017-2018 coverage for non-network hospital providers",
+          "USGIC-CSC-2017-2018 minimum inpatient admission duration for claim eligibility",
+          "USGIC-CSC-2017-2018 reimbursement percentage for non-network hospital expenses",
+          "USGIC-CSC-2017-2018 exclusions for non-network hospital treatment",
+          "USGIC-CSC-2017-2018 definition of registered hospital for claim purposes"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 2226.53,
+      "details": {
+        "query_count": 9,
+        "result_count": 21,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-2a8cae278105",
+          "clause-2c32d4e488c3",
+          "clause-e9109c4719df",
+          "clause-61dc71efc005",
+          "clause-05f60ef6948e",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-50ae97ec8d57",
+          "clause-4840074a0643",
+          "clause-5e4d5f7ea428",
+          "clause-d0f0ccf0f804",
+          "clause-e6020a8de5ce",
+          "clause-63f09648d041"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 12643.76,
+      "details": {
+        "findings": 4,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 11030.61,
+      "details": {
+        "status": "PASS",
+        "checked_statements": 6,
+        "defects": []
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.28,
+      "details": {
+        "decision": "NEEDS_REVIEW",
+        "reason_code": "INSUFFICIENT_EVIDENCE"
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital means institution registered OR all minimum criteria nursing staff beds",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.8339692950248718,
+            "bm25_score": 25.887570346997858,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995187520980835
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 2,
+            "dense_score": 0.6831597089767456,
+            "bm25_score": 24.450688120527523,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.9969294667243958
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6889106035232544,
+            "bm25_score": 10.021454894014322,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.7601166367530823
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.7258965969085693,
+            "bm25_score": 8.204639545348508,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.19630639255046844
+          }
+        ]
+      },
+      {
+        "query": "Medically Necessary treatment prescribed Medical Practitioner",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.7772445678710938,
+            "bm25_score": 18.910936195702106,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995817542076111
+          },
+          {
+            "chunk_id": "clause-e9109c4719df",
+            "rank": 2,
+            "dense_score": 0.703262984752655,
+            "bm25_score": 3.9730248819671914,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.48138707876205444
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.6190924644470215,
+            "bm25_score": 2.3311874460666626,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.34145864844322205
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.6318925619125366,
+            "bm25_score": 2.589114120706908,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.23629386723041534
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 coverage for non-network hospital providers",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-50ae97ec8d57",
+            "rank": 1,
+            "dense_score": 0.7061924338340759,
+            "bm25_score": 11.612282699690612,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.19436079263687134
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 2,
+            "dense_score": 0.6727497577667236,
+            "bm25_score": 3.2896900725756804,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.005309044383466244
+          },
+          {
+            "chunk_id": "clause-5e4d5f7ea428",
+            "rank": 3,
+            "dense_score": 0.655177116394043,
+            "bm25_score": 11.741430470774663,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.001808529021218419
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.6418485641479492,
+            "bm25_score": 2.6270054090066117,
+            "rrf_score": 0.015151515151515152,
+            "rerank_score": 0.0005221745232120156
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 minimum inpatient admission duration for claim eligibility",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 1,
+            "dense_score": 0.6473422646522522,
+            "bm25_score": 13.901131165148229,
+            "rrf_score": 0.031544957774465976,
+            "rerank_score": 0.02414090558886528
+          },
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 2,
+            "dense_score": 0.6800689697265625,
+            "bm25_score": 2.6321677740609246,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.005300356075167656
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 3,
+            "dense_score": 0.6550958752632141,
+            "bm25_score": 2.5139553170239592,
+            "rrf_score": 0.015384615384615385,
+            "rerank_score": 0.0025683112908154726
+          },
+          {
+            "chunk_id": "clause-d0f0ccf0f804",
+            "rank": 4,
+            "dense_score": 0.6049469113349915,
+            "bm25_score": 6.252199865030446,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.001795641495846212
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 reimbursement percentage for non-network hospital expenses",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-50ae97ec8d57",
+            "rank": 1,
+            "dense_score": 0.6784316301345825,
+            "bm25_score": 11.612282699690612,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.0017333462601527572
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 2,
+            "dense_score": 0.6252669095993042,
+            "bm25_score": 5.798934792721776,
+            "rrf_score": 0.015873015873015872,
+            "rerank_score": 0.0009843624429777265
+          },
+          {
+            "chunk_id": "clause-e6020a8de5ce",
+            "rank": 3,
+            "dense_score": 0.6390314102172852,
+            "bm25_score": 2.653058399529366,
+            "rrf_score": 0.014492753623188406,
+            "rerank_score": 0.0009351225453428924
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.6363499164581299,
+            "bm25_score": 2.5387828066187685,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.0006388777983374894
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 exclusions for non-network hospital treatment",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-50ae97ec8d57",
+            "rank": 1,
+            "dense_score": 0.716312050819397,
+            "bm25_score": 12.620131957273216,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.048990435898303986
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7237417697906494,
+            "bm25_score": 1.718710419938223,
+            "rrf_score": 0.01639344262295082,
+            "rerank_score": 0.0013157838257029653
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6733517646789551,
+            "bm25_score": 3.883157704887954,
+            "rrf_score": 0.014705882352941176,
+            "rerank_score": 0.000492281571496278
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.6712102890014648,
+            "bm25_score": 1.9176903882191327,
+            "rrf_score": 0.014492753623188406,
+            "rerank_score": 0.0004130133893340826
+          }
+        ]
+      },
+      {
+        "query": "USGIC-CSC-2017-2018 definition of registered hospital for claim purposes",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.7017369866371155,
+            "bm25_score": 6.589456735972937,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.0537254735827446
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 2,
+            "dense_score": 0.6791516542434692,
+            "bm25_score": 6.324618956557284,
+            "rrf_score": 0.031009615384615385,
+            "rerank_score": 0.013737061060965061
+          },
+          {
+            "chunk_id": "clause-50ae97ec8d57",
+            "rank": 3,
+            "dense_score": 0.6884204149246216,
+            "bm25_score": 6.297788687084465,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.007780157495290041
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 4,
+            "dense_score": 0.6752786636352539,
+            "bm25_score": 5.192067539993764,
+            "rrf_score": 0.030309988518943745,
+            "rerank_score": 0.007457928266376257
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 21,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 36880.29
+}

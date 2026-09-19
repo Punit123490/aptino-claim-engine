@@ -44,6 +44,8 @@ uvicorn app.main:app --host 0.0.0.0 --port 7860
 
 Open `http://localhost:7860`. The API documentation is at `/docs`. `/health` returns 503 until the index is loaded and a model key is configured. Readiness does not perform a billable model call; `check_connection` does.
 
+Model calls are paced by `MODEL_MIN_INTERVAL_SECONDS` (13 seconds by default) to accommodate a low-quota key. A review typically takes tens of seconds and can take longer if validation requests a correction. The evaluation report records measured local timings. Each server process has its own rate limiter; use one worker on a free-tier deployment.
+
 ## Architecture
 
 ```mermaid

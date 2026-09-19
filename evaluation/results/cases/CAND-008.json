@@ -1,0 +1,622 @@
+{
+  "case_id": "CAND-008",
+  "decision": "NOT_ADMISSIBLE",
+  "reason_code": null,
+  "confidence": 0.85,
+  "confidence_note": "Evidence-completeness heuristic, not a calibrated probability of payment.",
+  "key_findings": [
+    {
+      "dimension": "Domiciliary hospitalization coverage eligibility",
+      "statement": "The policy covers domiciliary hospitalization as defined, but explicitly excludes treatment not exceeding three days.",
+      "effect": "excludes",
+      "evidence_ids": [
+        "clause-4840074a0643",
+        "clause-63f09648d041"
+      ],
+      "fact_paths": [
+        "treatment.treatment_days"
+      ]
+    },
+    {
+      "dimension": "Minimum duration requirement",
+      "statement": "The claim is for 2 days of treatment, which falls under the exclusion for any treatment not exceeding three days.",
+      "effect": "excludes",
+      "evidence_ids": [
+        "clause-63f09648d041"
+      ],
+      "fact_paths": [
+        "treatment.treatment_days"
+      ]
+    },
+    {
+      "dimension": "Domiciliary hospitalization sub-limit",
+      "statement": "Expenses for domiciliary hospitalization are subject to a maximum aggregate sub-limit of 20% of the Basic Sum Insured (100,000 INR).",
+      "effect": "limits",
+      "evidence_ids": [
+        "clause-d807f54cecb1"
+      ],
+      "fact_paths": []
+    }
+  ],
+  "applicable_limits": [],
+  "missing_evidence": [],
+  "next_action": "The claim is denied as the treatment duration of 2 days is less than the minimum 3-day requirement specified in the policy exclusions.",
+  "citations": [
+    {
+      "claim": "The policy covers domiciliary hospitalization as defined, but explicitly excludes treatment not exceeding three days.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 1,
+      "pages": [
+        1
+      ],
+      "section": "Policy contract",
+      "chunk_id": "clause-4840074a0643",
+      "quote": "CSC – INDIVIDUAL HEALTH INSURANCE\nPROSPECTUS\nThis Policy is an evidence of the contract between You and Universal Sompo General Insurance\nCompany Limited. The information furnished by You/ in the Proposal form and the declaration signed\nby You forms the basis of this contract.\nThe Policy, the Schedule and any Endorsement shall be read together and any word or expression to\nwhich a specific meaning has been attached in any part of this Policy or of Schedule shall bear such\nmeaning whenever it may appear.\nThis Policy witnesses that in consideration of Your having paid the premium for the Policy Period\nstated in the Schedule or further period of insurance for which We may accept the premium for\nrenewal of this Policy, We undertake that if during the period of insurance or during the continuance\nof this Policy by renewal You contact any disease or suffer from any Illness or sustain any Bodily\nInjury through Accident and if such disease or injury shall require, upon the advices of a qualified\nMedical Practitioner, Hospitalization for medical/surgical treatment in any Nursing Home/Hospital in\nIndia, or Domiciliary Hospitalization as defined in the Policy, We will pay to You the amount of\nsuch expenses as may be reasonably and necessarily incurred in respe ct thereof as stated in the\nSchedule but not exceeding the Sum Insured in aggregate in any one period of insurance provided\nthat all the terms, conditions and exceptions of this Policy in so far as they relate to anything to be\ndone or complied with by You have been met."
+    },
+    {
+      "claim": "The policy covers domiciliary hospitalization as defined, but explicitly excludes treatment not exceeding three days.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 10,
+      "pages": [
+        10
+      ],
+      "section": "WHAT WE EXCLUDE / 17. Any expense under Domiciliary Hospitalisation for",
+      "chunk_id": "clause-63f09648d041",
+      "quote": "17. Any expense under Domiciliary Hospitalisation for\n18. Pre and Post Hospitalisation treatment\n19. Any treatment not exceeding three days.\n20. Treatment of following diseases:\ni) Asthma\nii) Bronchitis\niii) Chronic Nephritis and Nephritic Syndrome\niv) Diarrhoea and all type of Dysenteries includi ng Gastro-enteritis\nv) Diabetes Mellitus\nvi) Epilepsy\nvii) Hypertension\nviii) Influenza, Cough and Cold\nix) All types of Psychiatric or Psychosomatic Disorders\nx) Pyrexia of unknown origin for less than 15 days\nxi) Tonsillitis and Upper Respiratory Tract infection including Laryngitis and Pharingitis\nxii) Arthritis, Gout and Rheumatism\nxiii) Dental Treatment or Surgery"
+    },
+    {
+      "claim": "The claim is for 2 days of treatment, which falls under the exclusion for any treatment not exceeding three days.",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 10,
+      "pages": [
+        10
+      ],
+      "section": "WHAT WE EXCLUDE / 17. Any expense under Domiciliary Hospitalisation for",
+      "chunk_id": "clause-63f09648d041",
+      "quote": "17. Any expense under Domiciliary Hospitalisation for\n18. Pre and Post Hospitalisation treatment\n19. Any treatment not exceeding three days.\n20. Treatment of following diseases:\ni) Asthma\nii) Bronchitis\niii) Chronic Nephritis and Nephritic Syndrome\niv) Diarrhoea and all type of Dysenteries includi ng Gastro-enteritis\nv) Diabetes Mellitus\nvi) Epilepsy\nvii) Hypertension\nviii) Influenza, Cough and Cold\nix) All types of Psychiatric or Psychosomatic Disorders\nx) Pyrexia of unknown origin for less than 15 days\nxi) Tonsillitis and Upper Respiratory Tract infection including Laryngitis and Pharingitis\nxii) Arthritis, Gout and Rheumatism\nxiii) Dental Treatment or Surgery"
+    },
+    {
+      "claim": "Expenses for domiciliary hospitalization are subject to a maximum aggregate sub-limit of 20% of the Basic Sum Insured (100,000 INR).",
+      "source": "USGIC-CSCIndividualHealthInsurance_2017-2018.pdf",
+      "page": 7,
+      "pages": [
+        7
+      ],
+      "section": "WHAT WE COVER / NB2: Expenses incurred for Domiciliary Hospitalization will be paid up to a maximum aggregate sub-limit",
+      "chunk_id": "clause-d807f54cecb1",
+      "quote": "NB2: Expenses incurred for Domiciliary Hospitalization will be paid up to a maximum aggregate sub-limit\nof 20% of the Basic Sum Insured"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "unsupported_claims": [],
+    "structural_checks_passed": true,
+    "semantic_checks": [
+      {
+        "statement_index": 0,
+        "supported": true,
+        "explanation": "The policy covers domiciliary hospitalization and explicitly excludes any treatment not exceeding three days under the exclusions section."
+      },
+      {
+        "statement_index": 1,
+        "supported": true,
+        "explanation": "The claim is for 2 days of treatment, which is less than the three-day minimum required by the policy exclusion."
+      },
+      {
+        "statement_index": 2,
+        "supported": true,
+        "explanation": "The policy specifies a maximum aggregate sub-limit of 20% of the Basic Sum Insured for domiciliary hospitalization, which is 100,000 INR based on the 500,000 INR sum insured."
+      }
+    ]
+  },
+  "trace": [
+    {
+      "agent": "Case Analysis",
+      "action": "Identified decision dimensions and search plan",
+      "elapsed_ms": 11935.29,
+      "details": {
+        "dimensions": [
+          "Domiciliary hospitalization coverage eligibility",
+          "Minimum duration requirement for domiciliary treatment",
+          "Coverage limits for home-based medical treatment",
+          "Exclusions for non-hospitalized acute infections"
+        ],
+        "queries": [
+          "Does policy USGIC-CSC-2017-2018 cover domiciliary hospitalization?",
+          "What is the minimum duration of treatment required for domiciliary hospitalization claims?",
+          "Are there specific sub-limits or exclusions for doctor fees and medicines under domiciliary treatment?",
+          "Does the policy require proof of hospital bed unavailability for domiciliary claims?",
+          "Is acute infection a covered condition for domiciliary treatment under this policy?"
+        ]
+      }
+    },
+    {
+      "agent": "Policy Evidence",
+      "action": "Dense + BM25 search, reciprocal rank fusion, cross-encoder reranking",
+      "elapsed_ms": 6201.37,
+      "details": {
+        "query_count": 11,
+        "result_count": 20,
+        "per_query_top_k": 4,
+        "chunk_ids": [
+          "clause-999f339b3d0c",
+          "clause-ecee1595c519",
+          "clause-2cad9df5f127",
+          "clause-2a8cae278105",
+          "clause-2c32d4e488c3",
+          "clause-e9109c4719df",
+          "clause-61dc71efc005",
+          "clause-05f60ef6948e",
+          "clause-055297dc8d0f",
+          "clause-ea9845a19c83",
+          "clause-3371f7e3f0bd",
+          "clause-5264357920b8",
+          "clause-188173fa6d60",
+          "clause-b48c2d36fab9",
+          "clause-37a00abb9fe2",
+          "clause-d807f54cecb1",
+          "clause-4840074a0643",
+          "clause-63f09648d041",
+          "clause-7329216da69e",
+          "clause-10f4ae6cd4a4"
+        ]
+      }
+    },
+    {
+      "agent": "Coverage & Exclusion",
+      "action": "Assessed eligibility, exceptions and limits",
+      "elapsed_ms": 7649.55,
+      "details": {
+        "findings": 3,
+        "attempt": 1
+      }
+    },
+    {
+      "agent": "Validation",
+      "action": "Checked citation identity, amounts and semantic support",
+      "elapsed_ms": 12266.38,
+      "details": {
+        "status": "PASS",
+        "checked_statements": 3,
+        "defects": []
+      }
+    },
+    {
+      "agent": "Decision",
+      "action": "Applied validation gate and emitted structured result",
+      "elapsed_ms": 0.21,
+      "details": {
+        "decision": "NOT_ADMISSIBLE",
+        "reason_code": null
+      }
+    }
+  ],
+  "retrieval": {
+    "queries": [
+      {
+        "query": "Hospital means institution registered OR all minimum criteria nursing staff beds",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-999f339b3d0c",
+            "rank": 1,
+            "dense_score": 0.8339692950248718,
+            "bm25_score": 25.887570346997858,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995187520980835
+          },
+          {
+            "chunk_id": "clause-ecee1595c519",
+            "rank": 2,
+            "dense_score": 0.6831597089767456,
+            "bm25_score": 24.450688120527523,
+            "rrf_score": 0.030621785881252923,
+            "rerank_score": 0.9969294667243958
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.6889106035232544,
+            "bm25_score": 10.021454894014322,
+            "rrf_score": 0.030798389007344232,
+            "rerank_score": 0.7601166367530823
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 4,
+            "dense_score": 0.7258965969085693,
+            "bm25_score": 8.204639545348508,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.19630639255046844
+          }
+        ]
+      },
+      {
+        "query": "Medically Necessary treatment prescribed Medical Practitioner",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-2c32d4e488c3",
+            "rank": 1,
+            "dense_score": 0.7772445678710938,
+            "bm25_score": 18.910936195702106,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9995817542076111
+          },
+          {
+            "chunk_id": "clause-e9109c4719df",
+            "rank": 2,
+            "dense_score": 0.703262984752655,
+            "bm25_score": 3.9730248819671914,
+            "rrf_score": 0.03057889822595705,
+            "rerank_score": 0.48138707876205444
+          },
+          {
+            "chunk_id": "clause-61dc71efc005",
+            "rank": 3,
+            "dense_score": 0.6190924644470215,
+            "bm25_score": 2.3311874460666626,
+            "rrf_score": 0.013888888888888888,
+            "rerank_score": 0.34145864844322205
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 4,
+            "dense_score": 0.6318925619125366,
+            "bm25_score": 2.589114120706908,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.23629386723041534
+          }
+        ]
+      },
+      {
+        "query": "What we cover room boarding nursing doctor fees medicines diagnostic sub limits",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 1,
+            "dense_score": 0.7727645635604858,
+            "bm25_score": 30.246647244755366,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.997761607170105
+          },
+          {
+            "chunk_id": "clause-ea9845a19c83",
+            "rank": 2,
+            "dense_score": 0.6965413689613342,
+            "bm25_score": 14.912929462868961,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.27308011054992676
+          },
+          {
+            "chunk_id": "clause-3371f7e3f0bd",
+            "rank": 3,
+            "dense_score": 0.7031355500221252,
+            "bm25_score": 12.747045741166247,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.22677883505821228
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6620515584945679,
+            "bm25_score": 5.007010371345784,
+            "rrf_score": 0.028169014084507043,
+            "rerank_score": 0.050487976521253586
+          }
+        ]
+      },
+      {
+        "query": "30 days waiting period first year diseases prior insurer completed years claim history",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-5264357920b8",
+            "rank": 1,
+            "dense_score": 0.8031162619590759,
+            "bm25_score": 19.17764636794597,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9986124038696289
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 2,
+            "dense_score": 0.743914008140564,
+            "bm25_score": 21.274914013699867,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.535551130771637
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7446194887161255,
+            "bm25_score": 14.535122927117744,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.47399747371673584
+          },
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 4,
+            "dense_score": 0.7466027736663818,
+            "bm25_score": 9.435374777966835,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.037115998566150665
+          }
+        ]
+      },
+      {
+        "query": "Does policy USGIC-CSC-2017-2018 cover domiciliary hospitalization?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 1,
+            "dense_score": 0.7393956184387207,
+            "bm25_score": 10.591029205435184,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.5604676008224487
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 2,
+            "dense_score": 0.7018576264381409,
+            "bm25_score": 6.240523378116848,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.029953816905617714
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 3,
+            "dense_score": 0.6609728932380676,
+            "bm25_score": 3.3903986318095956,
+            "rrf_score": 0.014925373134328358,
+            "rerank_score": 0.019949551671743393
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6741966009140015,
+            "bm25_score": 1.5779777656415823,
+            "rrf_score": 0.015151515151515152,
+            "rerank_score": 0.00412531616166234
+          }
+        ]
+      },
+      {
+        "query": "What is the minimum duration of treatment required for domiciliary hospitalization claims?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.787575900554657,
+            "bm25_score": 8.167270375102422,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.9946160912513733
+          },
+          {
+            "chunk_id": "clause-2a8cae278105",
+            "rank": 2,
+            "dense_score": 0.7074322700500488,
+            "bm25_score": 11.185486425951678,
+            "rrf_score": 0.030330882352941176,
+            "rerank_score": 0.9222888350486755
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 3,
+            "dense_score": 0.7903783917427063,
+            "bm25_score": 10.759964748694593,
+            "rrf_score": 0.03131881575727918,
+            "rerank_score": 0.9129207730293274
+          },
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 4,
+            "dense_score": 0.7372509241104126,
+            "bm25_score": 13.421061435535638,
+            "rrf_score": 0.03177805800756621,
+            "rerank_score": 0.7944997549057007
+          }
+        ]
+      },
+      {
+        "query": "Are there specific sub-limits or exclusions for doctor fees and medicines under domiciliary treatment?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.803107738494873,
+            "bm25_score": 9.914684853442028,
+            "rrf_score": 0.032018442622950824,
+            "rerank_score": 0.42646998167037964
+          },
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 2,
+            "dense_score": 0.7427961230278015,
+            "bm25_score": 11.394702759882822,
+            "rrf_score": 0.03225806451612903,
+            "rerank_score": 0.09623578190803528
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 3,
+            "dense_score": 0.7137881517410278,
+            "bm25_score": 8.675814834993602,
+            "rrf_score": 0.030330882352941176,
+            "rerank_score": 0.08807621151208878
+          },
+          {
+            "chunk_id": "clause-7329216da69e",
+            "rank": 4,
+            "dense_score": 0.7026670575141907,
+            "bm25_score": 6.983876409806013,
+            "rrf_score": 0.014705882352941176,
+            "rerank_score": 0.004098346922546625
+          }
+        ]
+      },
+      {
+        "query": "Does the policy require proof of hospital bed unavailability for domiciliary claims?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-37a00abb9fe2",
+            "rank": 1,
+            "dense_score": 0.7094396352767944,
+            "bm25_score": 11.119007883635952,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.2682107090950012
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 2,
+            "dense_score": 0.6525322198867798,
+            "bm25_score": 13.702499056607614,
+            "rrf_score": 0.016129032258064516,
+            "rerank_score": 0.02978682331740856
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 3,
+            "dense_score": 0.6726275682449341,
+            "bm25_score": 5.8842809708773425,
+            "rrf_score": 0.014925373134328358,
+            "rerank_score": 0.020804576575756073
+          },
+          {
+            "chunk_id": "clause-4840074a0643",
+            "rank": 4,
+            "dense_score": 0.6800243854522705,
+            "bm25_score": 8.814616020022465,
+            "rrf_score": 0.030776515151515152,
+            "rerank_score": 0.015438172966241837
+          }
+        ]
+      },
+      {
+        "query": "Is acute infection a covered condition for domiciliary treatment under this policy?",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 1,
+            "dense_score": 0.7512268424034119,
+            "bm25_score": 12.47642301557363,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9740020036697388
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7698441743850708,
+            "bm25_score": 10.108080213365872,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.9675434827804565
+          },
+          {
+            "chunk_id": "clause-10f4ae6cd4a4",
+            "rank": 3,
+            "dense_score": 0.6565600037574768,
+            "bm25_score": 5.40395574834872,
+            "rrf_score": 0.014285714285714285,
+            "rerank_score": 0.12184248864650726
+          },
+          {
+            "chunk_id": "clause-2cad9df5f127",
+            "rank": 4,
+            "dense_score": 0.6807699799537659,
+            "bm25_score": 7.6819086352863355,
+            "rrf_score": 0.030776515151515152,
+            "rerank_score": 0.01670255698263645
+          }
+        ]
+      },
+      {
+        "query": "Domiciliary treatment home hospital unavailable definition 20% sub limit",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-d807f54cecb1",
+            "rank": 1,
+            "dense_score": 0.7274357676506042,
+            "bm25_score": 20.026250282540605,
+            "rrf_score": 0.03252247488101534,
+            "rerank_score": 0.9917473793029785
+          },
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 2,
+            "dense_score": 0.7223809361457825,
+            "bm25_score": 8.306970675400926,
+            "rrf_score": 0.03149801587301587,
+            "rerank_score": 0.9741984009742737
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 3,
+            "dense_score": 0.7377568483352661,
+            "bm25_score": 11.850806395217836,
+            "rrf_score": 0.032266458495966696,
+            "rerank_score": 0.9417027235031128
+          },
+          {
+            "chunk_id": "clause-055297dc8d0f",
+            "rank": 4,
+            "dense_score": 0.6558758020401001,
+            "bm25_score": 15.407064715794856,
+            "rrf_score": 0.03128054740957967,
+            "rerank_score": 0.09961981326341629
+          }
+        ]
+      },
+      {
+        "query": "Domiciliary exclusions treatment not exceeding three days diseases",
+        "top_k": 4,
+        "results": [
+          {
+            "chunk_id": "clause-63f09648d041",
+            "rank": 1,
+            "dense_score": 0.8457660675048828,
+            "bm25_score": 17.48716450487842,
+            "rrf_score": 0.03278688524590164,
+            "rerank_score": 0.9998123049736023
+          },
+          {
+            "chunk_id": "clause-05f60ef6948e",
+            "rank": 2,
+            "dense_score": 0.7258449196815491,
+            "bm25_score": 6.394351456160074,
+            "rrf_score": 0.0315136476426799,
+            "rerank_score": 0.8848841786384583
+          },
+          {
+            "chunk_id": "clause-b48c2d36fab9",
+            "rank": 3,
+            "dense_score": 0.7403620481491089,
+            "bm25_score": 5.2474366790902565,
+            "rrf_score": 0.031754032258064516,
+            "rerank_score": 0.21660174429416656
+          },
+          {
+            "chunk_id": "clause-188173fa6d60",
+            "rank": 4,
+            "dense_score": 0.7336364984512329,
+            "bm25_score": 2.5775157815259973,
+            "rrf_score": 0.015625,
+            "rerank_score": 0.09694560617208481
+          }
+        ]
+      }
+    ],
+    "unique_chunks": 20,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "reranker_model": "ms-marco-TinyBERT-L-2-v2"
+  },
+  "model": "gemini-3.1-flash-lite",
+  "policy_sha256": "44899a612dfd1faba65cba00fa36a36841ea70a19b587cb0d12b34a08d61182d",
+  "elapsed_ms": 38065.36
+}
